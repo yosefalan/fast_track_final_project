@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +22,16 @@ export class LoginComponent {
     ]),
   });
 
+  constructor(private router: Router, private userData: UserService) {}
+
   onSubmit(): void {
-    //TO DO: call login endpoint
+    //TO DO: call POST login endpoint
     //email: this.loginForm.controls['email'].value
     //password: this.login.controls["selectedGenre"].value
     //POST /login endpoint
     //if successful,
-    //this.router.navigateByUrl("/select-company")
+    // this.userData.updateLoggedInUserId();
+    this.router.navigateByUrl('/select-company');
     //else,
     //Display Try Again error
   }

@@ -6,9 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserService {
   private loggedInUserIdSource = new BehaviorSubject<number | null>(null);
-  selectedCompanyId = this.loggedInUserIdSource.asObservable();
+  loggedInUserId = this.loggedInUserIdSource.asObservable();
 
   updateLoggedInUserId(userId: number) {
     this.loggedInUserIdSource.next(userId);
   }
+
+  //TODO: return entire User object to check if user is admin after logging in?
 }

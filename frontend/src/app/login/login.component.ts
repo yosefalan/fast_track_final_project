@@ -12,12 +12,12 @@ export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl<string>('', [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(0),
       Validators.maxLength(12),
     ]),
     password: new FormControl<string>('', [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(0),
       Validators.maxLength(24),
     ]),
   });

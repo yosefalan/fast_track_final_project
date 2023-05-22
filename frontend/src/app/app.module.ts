@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginInputComponent } from './login/login-input/login-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SelectCompanyComponent } from './select-company/select-company.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LoginInputComponent],
+  declarations: [AppComponent, LoginComponent, LoginInputComponent, SelectCompanyComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

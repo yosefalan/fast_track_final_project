@@ -1,12 +1,6 @@
 <ng-container class="login-input">
   <label for="control">{{ label }}</label>
-  <input
-    type="text"
-    [formControl]="control"
-    name="control"
-    required
-    minlength="3"
-  />
+  <input type="text" [formControl]="control" name="control" />
   <ng-container *ngIf="control.touched && control.errors" class="error">
     <div class="error" *ngIf="control.errors['required']">
       A {{ label }} is required

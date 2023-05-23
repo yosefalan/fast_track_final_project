@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OverlayComponent } from '../overlay/overlay.component';
 
 @Component({
   selector: 'app-announcements',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
 export class AnnouncementsComponent {
   showNewAnnouncementModal() {
     console.log('show new announcement modal');
+  }
+
+  show(): void {
+    const modal = document.getElementById('modal');
+    if (modal) {
+      modal.style.display = 'block';
+    }
   }
 }

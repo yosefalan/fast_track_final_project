@@ -201,6 +201,107 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "POST /company/companyId/announcements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Add New Announcement Test\",\n    \"message\": \"Add New Announcement Test\",\n    \"author\": {\n            \"id\": 26,\n            \"profile\": {\n                \"firstName\": \"Gerri\",\n                \"lastName\": \"Kellman\",\n                \"email\": \"gkellman@email.com\",\n                \"phone\": \"(888) 888-8888\"\n            },\n            \"admin\": true,\n            \"active\": true,\n            \"status\": \"PENDING\"\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/6/announcements",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"announcements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /users/userId/teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users/21/teams",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"21",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /company/companyId/teams/teamId/projects",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Add new Project Test\",\n        \"description\": \"Add New Project Test\",\n        \"active\": true,\n        \"team\": {\n            \"id\": 11,\n            \"name\": \"Team 1\",\n            \"description\": \"Greg & Tom\",\n            \"teammates\": [\n                {\n                    \"id\": 19,\n                    \"profile\": {\n                        \"firstName\": \"Tom\",\n                        \"lastName\": \"Wambsgans\",\n                        \"email\": \"twambsgans@email.com\",\n                        \"phone\": \"(111) 111-1111\"\n                    },\n                    \"admin\": false,\n                    \"active\": true,\n                    \"status\": \"PENDING\"\n                },\n                {\n                    \"id\": 18,\n                    \"profile\": {\n                        \"firstName\": \"Greg\",\n                        \"lastName\": \"Hirsch\",\n                        \"email\": \"ghirsch@email.com\",\n                        \"phone\": \"(000) 000-0000\"\n                    },\n                    \"admin\": false,\n                    \"active\": true,\n                    \"status\": \"PENDING\"\n                }\n            ]\n        }\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/6/teams/11/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams",
+						"11",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /company/companyId/users/userId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/users/18",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"users",
+						"18"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

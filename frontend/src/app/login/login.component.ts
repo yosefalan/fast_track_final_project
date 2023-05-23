@@ -43,7 +43,12 @@ export class LoginComponent {
         password: this.loginForm.controls['password'].value,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         this.userData.updateLoggedInUser(data);
         if (data.admin) {

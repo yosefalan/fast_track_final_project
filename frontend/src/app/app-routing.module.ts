@@ -5,7 +5,7 @@ import { SelectCompanyComponent } from './select-company/select-company.componen
 import { AnnouncementsComponent } from './announcements/announcements.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: AnnouncementsComponent },
   { path: 'select-company', component: SelectCompanyComponent },
   { path: 'announcements', component: AnnouncementsComponent },
 ];

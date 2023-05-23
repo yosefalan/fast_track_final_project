@@ -27,22 +27,11 @@ export class SelectCompanyComponent {
   ) {}
 
   ngOnInit(): void {
-    this.userData.loggedInUserId.subscribe((userId) => {
-      userId = 5;
-      if (userId === null) {
+    this.userData.loggedInUser.subscribe((user) => {
+      if (user === null) {
         this.router.navigateByUrl('/');
-      }
+      } else this.companies = user.companies;
     });
-    //TO DO: if not admin, display error and button to go back to login.
-    this.loadCompanies();
-  }
-
-  loadCompanies(): void {
-    //call API endpoint, set class variable
-    this.companies = [
-      { id: 1, name: 'FedEx', description: 'FedEx Description' },
-      { id: 2, name: 'LQK', description: 'LQK Description' },
-    ];
   }
 
   onSubmit(): void {

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import User from '../models/User';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private loggedInUserIdSource = new BehaviorSubject<number | null>(null);
-  loggedInUserId = this.loggedInUserIdSource.asObservable();
+  private loggedInUserSource = new BehaviorSubject<User | null>(null);
+  loggedInUser = this.loggedInUserSource.asObservable();
 
-  updateLoggedInUserId(userId: number) {
-    this.loggedInUserIdSource.next(userId);
+  updateLoggedInUser(userData: User) {
+    this.loggedInUserSource.next(userData);
   }
-
-  //TODO: return entire User object to check if user is admin after logging in?
 }

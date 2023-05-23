@@ -5,8 +5,8 @@
     <img src="../../assets/logo.png" />
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <app-login-input
-        [control]="$any(loginForm.get('email'))"
-        label="Email"
+        [control]="$any(loginForm.get('username'))"
+        label="Username"
       ></app-login-input>
       <app-login-input
         [control]="$any(loginForm.get('password'))"

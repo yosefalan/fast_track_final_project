@@ -3,6 +3,9 @@ package com.cooksys.groupfinal.services.impl;
 import java.util.Optional;
 import java.util.Set;
 
+import com.cooksys.groupfinal.dtos.TeamDto;
+import com.cooksys.groupfinal.entities.Team;
+import com.cooksys.groupfinal.mappers.TeamMapper;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.groupfinal.dtos.CompanyDto;
@@ -30,7 +33,8 @@ public class UserServiceImpl implements UserService {
 	private final FullUserMapper fullUserMapper;
 	private final CredentialsMapper credentialsMapper;
 	private final CompanyMapper companyMapper;
-	
+    private final TeamMapper teamMapper;
+
 	private User findUser(String username) {
         Optional<User> user = userRepository.findByCredentialsUsernameAndActiveTrue(username);
         if (user.isEmpty()) {
@@ -56,6 +60,7 @@ public class UserServiceImpl implements UserService {
         return fullUserMapper.entityToFullUserDto(userToValidate);
 	}
 
+	
 	@Override
 	public Set<CompanyDto> getCompanyByUserId(Long id) {
 		Optional<User> optionalUser = userRepository.findById(id);
@@ -68,10 +73,20 @@ public class UserServiceImpl implements UserService {
 		
 		Set<Company> companies = user.getCompanies();
 		
-	
 		return companyMapper.entitiesToDtos(companies);
+	}
+
+    @Override
+    public Set<TeamDto> getTeamsByUser(Long userId){
+        Optional<User> user = userRepository.findById(userId);
+        if(user.isEmpty()){
+            throw new NotFoundException("User was not found");
+        }
+        Set<Team> teams = user.get().getTeams();
+        return teamMapper.entitiesToDtos(teams);
+    }
 		
 	}
 	
 
-}
+

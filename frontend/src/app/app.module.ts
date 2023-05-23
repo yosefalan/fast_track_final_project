@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectCompanyComponent } from './select-company/select-company.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     SelectCompanyComponent,
     AnnouncementsComponent,
     NavbarComponent,
+    ProjectsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

@@ -1,0 +1,28 @@
+<h2>Select Company</h2>
+<form class="container" [formGroup]="selectCompanyForm">
+  <select
+    name="selectedCompany"
+    class="custom-select"
+    formControlName="selectedCompany"
+    (change)="onSubmit()"
+  >
+    <option class="" value="" disabled>Pick an option</option>
+    <option class="" *ngFor="let company of companies" [ngValue]="company.id">
+      {{ company.name }}
+    </option>
+  </select>
+  <br />
+  <ng-container
+    *ngIf="
+      selectCompanyForm.controls['selectedCompany'].touched &&
+      selectCompanyForm.controls['selectedCompany'].errors
+    "
+  >
+    <div
+      *ngIf="selectCompanyForm.controls['selectedCompany'].errors['required']"
+      class="error"
+    >
+      A Company is required
+    </div>
+  </ng-container>
+</form>

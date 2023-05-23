@@ -8,18 +8,9 @@ import { Router } from "@angular/router"
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  isAdmin: boolean = false;
+  isAdmin: boolean = true;
   constructor(private router: Router, private userService: UserService) {
     //if user is admin, set isAdmin to true
-  }
-
-  show(): boolean {
-    if (this.router.url === '/' || this.router.url === '/select-company') {
-      return false;
-    }
-    else {
-      return true;
-    }
   }
 
   logout(): void {

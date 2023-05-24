@@ -17,7 +17,7 @@ export class LoginComponent {
       Validators.required,
       Validators.minLength(1),
     ]),
-    password: new FormControl<string>('mosteligiblebachelor', [
+    password: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
     ]),
@@ -30,7 +30,7 @@ export class LoginComponent {
       this.user = user;
     });
   }
-  
+
   onSubmit(): void {
     fetch('http://localhost:8080/users/login', {
       method: 'POST',

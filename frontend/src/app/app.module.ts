@@ -10,6 +10,7 @@ import { SelectCompanyComponent } from './select-company/select-company.componen
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProjectsComponent } from './projects/projects.component';
     AnnouncementsComponent,
     NavbarComponent,
     ProjectsComponent,
+    UsersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

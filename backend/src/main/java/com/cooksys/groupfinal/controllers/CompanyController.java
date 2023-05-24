@@ -69,8 +69,8 @@ public class CompanyController {
 
 
     @PostMapping("/{companyId}/announcements")
-    public AnnouncementDto postAnnouncement(@PathVariable Long companyId, @RequestBody Announcement announcement){
-        return companyService.postAnnouncement(companyId, announcement);
+    public AnnouncementDto postAnnouncement(@PathVariable Long companyId, @RequestBody AnnouncementRequestDto announcementRequestDto){
+        return companyService.postAnnouncement(companyId, announcementRequestDto);
     }
 
     @PostMapping("/{companyId}/teams/{teamId}/projects")

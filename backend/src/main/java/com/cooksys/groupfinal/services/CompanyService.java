@@ -31,7 +31,7 @@ public interface CompanyService {
 
 	ProjectDto editProject(Long id, Long teamId, Long projectId, ProjectRequestDto projectRequestDto);
 
-	AnnouncementDto postAnnouncement(Long companyId, Announcement announcement);
+	AnnouncementDto postAnnouncement(Long companyId, AnnouncementRequestDto announcementRequestDto);
 
 	ProjectDto postProject(Long companyId, Long teamId, Project project);
 

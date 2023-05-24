@@ -14,7 +14,7 @@ export class SelectCompanyComponent {
   companies: Company[] = [];
 
   selectCompanyForm: FormGroup = new FormGroup({
-    selectedCompany: new FormControl<number | null>(null, [
+    selectedCompany: new FormControl<Company | null>(null, [
       Validators.required,
     ]),
   });
@@ -35,8 +35,9 @@ export class SelectCompanyComponent {
   }
 
   onSubmit(): void {
+    console.log(this.selectCompanyForm.controls['selectedCompany'].value)
     this.companyData.updateSelectedCompanyId(
-      this.selectCompanyForm.controls['selectedCompany'].value.id
+      this.selectCompanyForm.controls['selectedCompany'].value
     );
     this.router.navigateByUrl('/announcements');
   }

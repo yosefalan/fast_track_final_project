@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<h1>User Registry</h1>
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Team</th>
+      <th>Active</th>
+      <th>Admin</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.profile.firstName}} {{employee.profile.lastName}}</td>
+      <td>{{employee.profile.email}}</td>
+      <td></td>
+      <ng-container *ngIf="employee.active == true"><td style="color: #32CD32">YES</td></ng-container>
+      <ng-container *ngIf="employee.active == false"><td style="color: red;">NO</td></ng-container>
+      <ng-container *ngIf="employee.admin == true"><td style="color: #32CD32;">YES</td></ng-container>
+      <ng-container *ngIf="employee.admin == false"><td style="color: red;">NO</td></ng-container>
+      <td>{{employee.status}}</td>
+    </tr>
+  </table>
+
+  <div class="button-container">
+    <button>Add User</button>
+  </div>  

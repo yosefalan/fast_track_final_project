@@ -5,6 +5,7 @@ import { SelectCompanyComponent } from './select-company/select-company.componen
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UsersComponent } from './users/users.component';
+import { TeamsComponent } from './teams/teams.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'announcements', component: AnnouncementsComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'users', component: UsersComponent }
+  { path: 'users', component: UsersComponent },
+  { path: 'teams', component: TeamsComponent}
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { SelectCompanyComponent } from './select-company/select-company.componen
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { TextInputComponent } from './text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OverlayComponent } from './overlay/overlay.component';
     AnnouncementsComponent,
     NavbarComponent,
     OverlayComponent,
+    TextInputComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

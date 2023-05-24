@@ -1,11 +1,14 @@
 <app-navbar></app-navbar>
 <div *ngIf="user?.admin===false">
-    <div *ngFor="let teamCard of teamCards; index as i">
+    <h1>Teams</h1>
+    <div *ngFor="let teamCard of teamCards">
         <div>
-            <h1>{{ teamCards[i].name }}</h1>
-            <h1>{{ teamCards[i].numProjects }}</h1>
-            <h1 *ngFor="let teammate of teamCard[i].teammates; index as j">{{ teamCards[i].teammates[j] }}</h1>
+            <h2>{{ teamCard.name }}</h2>
+            <span># of projects: {{ teamCard.numProjects }}</span>
+            <ul>
+                <li *ngFor="let teammate of teamCard.teammates">{{ teammate.profile.firstName }} {{ teammate.profile.lastName }}</li>
+            </ul>
         </div>
     </div>
 
-</div>>
+</div>

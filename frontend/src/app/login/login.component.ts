@@ -30,7 +30,7 @@ export class LoginComponent {
       this.user = user;
     });
   }
-  
+
   onSubmit(): void {
     fetch('http://localhost:8080/users/login', {
       method: 'POST',
@@ -54,3 +54,4 @@ export class LoginComponent {
       });
   }
 }
+

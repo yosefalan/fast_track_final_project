@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { TextInputComponent } from './text-input/text-input.component';
 import { UsersComponent } from './users/users.component';
+import { TeamsComponent } from './teams/teams.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UsersComponent } from './users/users.component';
     OverlayComponent,
     TextInputComponent,
     UsersComponent,
+    TeamsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

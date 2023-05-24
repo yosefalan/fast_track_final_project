@@ -22,7 +22,7 @@ public class CompanyController {
 	private final CompanyService companyService;
 	
 	@GetMapping("/{id}/users")
-    public Set<FullUserDto> getAllUsers(@PathVariable Long id) {
+    public List<FullUserDto> getAllUsers(@PathVariable Long id) {
         return companyService.getAllUsers(id);
     }
 	
@@ -65,6 +65,11 @@ public class CompanyController {
     @DeleteMapping("/{companyId}/users/{userId}")
     public FullUserDto deleteUser(@PathVariable Long companyId, @PathVariable Long userId){
         return companyService.deleteUser(companyId, userId);
+    }
+
+    @PostMapping("/{companyId}/users")
+    public BasicUserDto addUser(@PathVariable Long companyId, @RequestBody UserRequestDto userRequestDto){
+        return companyService.addUser(companyId, userRequestDto);
     }
 
 }

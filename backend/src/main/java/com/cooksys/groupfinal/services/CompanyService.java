@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface CompanyService {
 
-	Set<FullUserDto> getAllUsers(Long id);
+	List<FullUserDto> getAllUsers(Long id);
 
 	List<AnnouncementDto> getAllAnnouncements(Long id);
 
@@ -29,5 +29,7 @@ public interface CompanyService {
 	ProjectDto postProject(Long companyId, Long teamId, Project project);
 
 	FullUserDto deleteUser(Long companyId, Long userId);
+
+	BasicUserDto addUser(Long companyId, UserRequestDto userRequestDto);
 
 }

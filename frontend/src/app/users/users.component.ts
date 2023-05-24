@@ -45,6 +45,8 @@ export class UsersComponent {
       this.company = company;
       this.employees = company.employees
 
+      console.log(this.employees);
+
       }
     });
 

@@ -1,5 +1,6 @@
 package com.cooksys.groupfinal.mappers;
 
+import java.util.List;
 import java.util.Set;
 
 import com.cooksys.groupfinal.dtos.AnnouncementRequestDto;
@@ -13,7 +14,7 @@ public interface AnnouncementMapper {
 	
 	AnnouncementDto entityToDto(Announcement announcement);
 
-    Set<AnnouncementDto> entitiesToDtos(Set<Announcement> announcement);
+    List<AnnouncementDto> entitiesToDtos(List<Announcement> announcement);
 
     Announcement requestDtoToEntity(AnnouncementRequestDto announcementRequestDto);
     

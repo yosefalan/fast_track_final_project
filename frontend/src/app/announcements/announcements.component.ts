@@ -90,8 +90,8 @@ export class AnnouncementsComponent {
           }
           return res.json();
         })
-        .then((data) => {
-          console.log(data);
+        .then(() => {
+          this.loadCompanyAnnouncements(this.companyId);
         });
     }
   }

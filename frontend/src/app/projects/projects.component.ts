@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CompanyService } from '../services/company.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -8,50 +9,47 @@ import { CompanyService } from '../services/company.service'
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent {
-  projects: any[] = [];
+  @Input() teamName: string = '';
+  @Input() isAdmin: boolean = true;
+  @Input() projects: any[] = [];
+
   companyId: number | null = null;
 
   constructor(
     private http: HttpClient,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     console.log("YO!")
     this.companyService.selectedCompanyId.subscribe((company) => {
-      if (company) {
-        this.companyId = company.id;
-        this.fetchProjects();
-      } else {
-        this.companyId = null;
-      }
+
     });
   }
 
-  fetchProjects(): void {
-    const companyId = 123; // Replace with your companyId
-    const teamId = 456; // Replace with your teamId
+  createNewProject(): void {
+    //TODO
+    // // Replace {companyId} and {teamId} with the correct  IDs
+    // const url = `http://localhost:8080/company/{companyId}/teams/{teamId}/projects`;
 
-    const url = `http://localhost:8080/company/${this.companyId}/teams/${teamId}/projects`;
-
-
-    this.http.get<any[]>(url).subscribe(
-      (response) => {
-        this.projects = response;
-      },
-      (error) => {
-        console.error('Error fetching projects:', error);
-      }
-    );
+    // this.http.post(url, {}).subscribe(
+    //   (response) => {
+    //     const newProject = response;
+    //   },
+    //   (error) => {
+    //     console.error('Error creating new project:', error);
+    //   }
+    // );
   }
 
   editProject(project: any): void {
-    const companyId = 123; // Replace with your companyId
-    const teamId = 456; // Replace with your teamId
+    const companyId = 123; // Todo
+    const teamId = 456; // Todo
 
     const url = `http://localhost:8080/${companyId}/teams/${teamId}/projects`;
 
-    // Make your POST request with the updated project data
+
     this.http.post(url, project).subscribe(
       (response) => {
         console.log('Project updated successfully:', response);
@@ -61,4 +59,9 @@ export class ProjectsComponent {
       }
     );
   }
+
+  goBack(): void {
+    this.router.navigate(['/teams']);
+  }
+
 }

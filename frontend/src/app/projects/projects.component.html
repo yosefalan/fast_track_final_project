@@ -1,5 +1,13 @@
 <app-navbar></app-navbar>
-<div class="center">
-  <h1>Hi</h1>
-  <p>hello</p>
+<div>
+  <button (click)="goBack()">Back</button>
+  <h1>Projects for {{ teamName }}</h1>
+  <button *ngIf="isAdmin" (click)="createNewProject()">New</button>
+
+  <div *ngFor="let project of projects">
+    <h2>{{ project.name }}</h2>
+    <p>{{ project.active ? 'Active' : 'Inactive' }}</p>
+    <p>{{ project.description }}</p>
+    <button (click)="editProject(project.id)">Edit</button>
+  </div>
 </div>

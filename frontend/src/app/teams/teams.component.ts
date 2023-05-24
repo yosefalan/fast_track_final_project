@@ -19,7 +19,7 @@ export class TeamsComponent {
   constructor(private router: Router, private userData: UserService, private companyData: CompanyService) {}
 
   ngOnInit(): void {
-    this.companyData.selectedCompanyId.subscribe((company) => {
+    this.companyData.selectedCompany.subscribe((company) => {
       this.company = company;
     });
     this.userData.loggedInUser.subscribe((user) => {

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import User from '../models/User';
 import { UserService } from '../services/user.service';
 import { CompanyService } from '../services/company.service';
+import Announcement from '../models/Announcement';
 
 @Component({
   selector: 'app-announcements',
@@ -15,6 +16,7 @@ import { CompanyService } from '../services/company.service';
 export class AnnouncementsComponent {
   user: User | null = null;
   companyId: number = 0;
+  announcements: Announcement[] = [];
 
   newAnnouncementForm: FormGroup = new FormGroup({
     title: new FormControl<string>('', [
@@ -43,12 +45,28 @@ export class AnnouncementsComponent {
     this.companyData.selectedCompany.subscribe((company) => {
       if (company) {
         this.companyId = company.id;
+        this.loadCompanyAnnouncements(company.id);
       }
     });
   }
 
+  async loadCompanyAnnouncements(companyId: number): Promise<void> {
+    const response = await fetch(
+      `http://localhost:8080/company/${companyId}/announcements`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => data);
+    this.announcements = response;
+  }
+
   showNewAnnouncementModal() {
-    console.log('show new announcement modal');
     show();
   }
 
@@ -72,8 +90,8 @@ export class AnnouncementsComponent {
           }
           return res.json();
         })
-        .then((data) => {
-          console.log(data);
+        .then(() => {
+          this.loadCompanyAnnouncements(this.companyId);
         });
     }
   }

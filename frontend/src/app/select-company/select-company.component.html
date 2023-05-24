@@ -7,7 +7,7 @@
     (change)="onSubmit()"
   >
     <option class="" value="" disabled>Pick an option</option>
-    <option class="" *ngFor="let company of companies" [ngValue]="company.id">
+    <option class="" *ngFor="let company of companies" [ngValue]="company">
       {{ company.name }}
     </option>
   </select>

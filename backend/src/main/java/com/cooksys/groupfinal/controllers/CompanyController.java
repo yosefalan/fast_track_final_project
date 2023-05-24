@@ -31,6 +31,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/company")
 @RequiredArgsConstructor
+@CrossOrigin(origins="*")
 public class CompanyController {
 	
 	private final CompanyService companyService;
@@ -55,7 +56,6 @@ public class CompanyController {
 		return companyService.getAllProjects(companyId, teamId);
 	}
 
-	
 	@PostMapping("/{id}/teams")
     public TeamDto createTeam(@PathVariable Long id, @RequestBody TeamRequestDto teamRequestDto) {
         return companyService.createTeam(id, teamRequestDto);
@@ -67,10 +67,9 @@ public class CompanyController {
 		return companyService.editProject(id, teamId, projectId, projectRequestDto);
 	}
 
-
     @PostMapping("/{companyId}/announcements")
-    public AnnouncementDto postAnnouncement(@PathVariable Long companyId, @RequestBody Announcement announcement){
-        return companyService.postAnnouncement(companyId, announcement);
+    public AnnouncementDto postAnnouncement(@PathVariable Long companyId, @RequestBody AnnouncementRequestDto announcementRequestDto){
+        return companyService.postAnnouncement(companyId, announcementRequestDto);
     }
 
     @PostMapping("/{companyId}/teams/{teamId}/projects")

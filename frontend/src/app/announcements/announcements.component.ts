@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import User from '../models/User';
 import { UserService } from '../services/user.service';
+import { CompanyService } from '../services/company.service';
 
 @Component({
   selector: 'app-announcements',
@@ -13,25 +14,36 @@ import { UserService } from '../services/user.service';
 })
 export class AnnouncementsComponent {
   user: User | null = null;
+  companyId: number = 0;
 
   newAnnouncementForm: FormGroup = new FormGroup({
     title: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
     ]),
-    description: new FormControl<string>('', [
+    message: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
     ]),
   });
 
-  constructor(private router: Router, private userData: UserService) {}
+  constructor(
+    private router: Router,
+    private userData: UserService,
+    private companyData: CompanyService
+  ) {}
 
   ngOnInit(): void {
     this.userData.loggedInUser.subscribe((user) => {
-      if (user === null) {
+      if (!user) {
         this.router.navigateByUrl('/');
       } else this.user = user;
+    });
+
+    this.companyData.selectedCompany.subscribe((company) => {
+      if (company) {
+        this.companyId = company.id;
+      }
     });
   }
 
@@ -41,26 +53,28 @@ export class AnnouncementsComponent {
   }
 
   onNewAnnouncementFormSubmit(): void {
-    fetch('http://localhost:8080/6/announcements', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: this.user?.profile.firstName,
-        text: this.newAnnouncementForm.controls['title'].value,
-        description: this.newAnnouncementForm.controls['description'].value,
-      }),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Status: ${res.status}`);
-        }
-        return res.json();
+    if (this.companyId && this.user) {
+      fetch(`http://localhost:8080/company/${this.companyId}/announcements`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          authorId: this.user.id,
+          title: this.newAnnouncementForm.controls['title'].value,
+          message: this.newAnnouncementForm.controls['message'].value,
+        }),
       })
-      .then((data) => {
-        console.log(data);
-      });
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    }
   }
 }

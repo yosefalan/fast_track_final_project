@@ -35,8 +35,7 @@ export class SelectCompanyComponent {
   }
 
   onSubmit(): void {
-    console.log(this.selectCompanyForm.controls['selectedCompany'].value)
-    this.companyData.updateSelectedCompanyId(
+    this.companyData.updateselectedCompany(
       this.selectCompanyForm.controls['selectedCompany'].value
     );
     this.router.navigateByUrl('/announcements');

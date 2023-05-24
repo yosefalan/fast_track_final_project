@@ -197,12 +197,17 @@ public class CompanyServiceImpl implements CompanyService {
 		  return projectMapper.entityToDto(updatedProject);
 	}
 
-	public AnnouncementDto postAnnouncement(Long companyId, Announcement announcement){
+	public AnnouncementDto postAnnouncement(Long companyId, AnnouncementRequestDto announcementRequestDto){
 		Company company = findCompany(companyId);
+		User user = findUser(announcementRequestDto.getAuthorId());
+
+		Announcement announcement = new Announcement();
+		announcement.setAuthor(user);
 		announcement.setCompany(company);
+		announcement.setMessage(announcementRequestDto.getMessage());
+		announcement.setTitle(announcementRequestDto.getTitle());
 
 		announcementRepository.saveAndFlush(announcement);
-		companyRepository.saveAndFlush(company);
 
 		return announcementMapper.entityToDto(announcement);
 

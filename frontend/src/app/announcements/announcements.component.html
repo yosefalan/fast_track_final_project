@@ -11,8 +11,8 @@
         label="Title"
       ></app-text-input>
       <app-text-input
-        [control]="$any(newAnnouncementForm.get('description'))"
-        label="Description"
+        [control]="$any(newAnnouncementForm.get('message'))"
+        label="Message"
       ></app-text-input>
       <br />
       <button
@@ -29,7 +29,15 @@
 <div class="center">
   <h2>Announcements</h2>
   <div class="right-align">
-    <button class="btn-link" (click)="showNewAnnouncementModal()">New</button>
+    <ng-container>
+      <button
+        *ngIf="user && user.admin"
+        class="btn-link"
+        (click)="showNewAnnouncementModal()"
+      >
+        New
+      </button>
+    </ng-container>
   </div>
   <hr />
   <div class="center">

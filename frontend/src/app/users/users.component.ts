@@ -11,17 +11,14 @@ import Team from '../models/Team';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
-
-
 export class UsersComponent {
   company: Company | null = null;
   employees: User[] = [];
   profile: Profile | null = null;
-  firstname: String = "";
+  firstname: String = '';
   //teams: Team[] = [];
-  
 
   constructor(
     private userData: UserService,
@@ -34,21 +31,18 @@ export class UsersComponent {
     this.userData.loggedInUser.subscribe((user) => {
       if (user === null) {
         this.router.navigateByUrl('/');
-      } 
+      }
     });
 
-    this.companyData.selectedCompanyId.subscribe((company) => {
-      if (company === null || company.employees === null){
+    this.companyData.selectedCompany.subscribe((company) => {
+      if (company === null || company.employees === null) {
         this.router.navigateByUrl('/');
-      }
-      else {
-      this.company = company;
-      this.employees = company.employees
+      } else {
+        this.company = company;
+        this.employees = company.employees;
 
-      console.log(this.employees);
-
+        console.log(this.employees);
       }
     });
-
   }
 }

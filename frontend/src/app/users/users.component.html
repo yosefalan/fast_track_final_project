@@ -1,4 +1,54 @@
 <app-navbar></app-navbar>
+<app-overlay>
+    <form class="new-announcement"
+      [formGroup]="addUserForm"
+      (ngSubmit)="onAddUserFormSubmit()"
+      >
+
+      <app-text-input
+        [control]="$any(addUserForm.get('firstName'))"
+        label="First Name"
+      ></app-text-input>
+      <app-text-input
+        [control]="$any(addUserForm.get('lastName'))"
+        label="Last Name"
+      ></app-text-input>
+      <app-text-input
+        [control]="$any(addUserForm.get('email'))"
+        label="Email"
+      ></app-text-input>
+      <app-text-input
+        [control]="$any(addUserForm.get('phone'))"
+        label="Phone"
+      ></app-text-input>
+      <app-text-input
+        [control]="$any(addUserForm.get('password'))"
+        label="Password"
+      ></app-text-input>
+      <app-text-input
+        [control]="$any(addUserForm.get('confirmPassword'))"
+        label="Confirm Password"
+      ></app-text-input>
+
+    <select
+        name="isAdmin"
+        class="custom-select"
+        formControlName="isAdmin">
+        <option class="" value="" disabled>Pick an option</option>
+        <option class="" [ngValue]="true">Yes</option>
+        <option class="" [ngValue]="false">No</option>
+    </select>
+
+  <button
+        class="inputs button"
+        type="submit"
+        [disabled]="addUserForm.invalid"
+      >
+        Submit
+      </button>
+
+    </form>
+  </app-overlay>
 
 <h1>User Registry</h1>
 <table>
@@ -20,6 +70,8 @@
     </tr>
   </table>
 
+  
+
   <div class="button-container">
-    <button>Add User</button>
+    <button (click)="showAddUserModal()">Add User</button>
   </div>  

@@ -1,5 +1,6 @@
 package com.cooksys.groupfinal.services.impl;
 
+import com.cooksys.groupfinal.mappers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,10 +21,6 @@ import com.cooksys.groupfinal.entities.Project;
 import com.cooksys.groupfinal.entities.Team;
 import com.cooksys.groupfinal.entities.User;
 import com.cooksys.groupfinal.exceptions.NotFoundException;
-import com.cooksys.groupfinal.mappers.AnnouncementMapper;
-import com.cooksys.groupfinal.mappers.ProjectMapper;
-import com.cooksys.groupfinal.mappers.TeamMapper;
-import com.cooksys.groupfinal.mappers.FullUserMapper;
 
 import com.cooksys.groupfinal.services.CompanyService;
 
@@ -42,6 +39,9 @@ public class CompanyServiceImpl implements CompanyService {
 	private final TeamMapper teamMapper;
 	private final ProjectMapper projectMapper;
 	private final AnnouncementRepository announcementRepository;
+	private final ProfileMapper profileMapper;
+	private final CredentialsMapper credentialsMapper;
+	private final BasicUserMapper basicUserMapper;
 
 	
 	
@@ -91,9 +91,9 @@ public class CompanyServiceImpl implements CompanyService {
 
 	
 	@Override
-	public Set<FullUserDto> getAllUsers(Long id) {
+	public List<FullUserDto> getAllUsers(Long id) {
 		Company company = findCompany(id);
-		Set<User> filteredUsers = new HashSet<>();
+		List<User> filteredUsers = new ArrayList<>();
 		company.getEmployees().forEach(filteredUsers::add);
 		filteredUsers.removeIf(user -> !user.isActive());
 		return fullUserMapper.entitiesToFullUserDtos(filteredUsers);
@@ -224,6 +224,26 @@ public class CompanyServiceImpl implements CompanyService {
 		teamRepository.saveAllAndFlush(company.getTeams());
 
 		return fullUserMapper.entityToFullUserDto(userToDelete);
+
+	}
+
+	public BasicUserDto addUser(Long companyId, UserRequestDto userRequestDto){
+		Company company = findCompany(companyId);
+
+		User user = new User();
+		user.getCompanies().add(company);
+		user.setCompanies(user.getCompanies());
+		user.setAdmin(userRequestDto.isAdmin());
+		user.setActive(true);
+		user.setProfile(profileMapper.dtoToEntity(userRequestDto.getProfile()));
+		user.setCredentials(credentialsMapper.dtoToEntity(userRequestDto.getCredentials()));
+
+		userRepository.saveAndFlush(user);
+		company.getEmployees().add(user);
+
+		companyRepository.saveAndFlush(company);
+
+		return basicUserMapper.entityToBasicUserDto(user);
 
 	}
 

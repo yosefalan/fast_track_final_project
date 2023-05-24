@@ -13,7 +13,7 @@ export class LoginComponent {
   user: User | null = null;
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl<string>('cousingreg', [
+    username: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
     ]),
@@ -30,7 +30,7 @@ export class LoginComponent {
       this.user = user;
     });
   }
-
+  
   onSubmit(): void {
     fetch('http://localhost:8080/users/login', {
       method: 'POST',
@@ -43,12 +43,7 @@ export class LoginComponent {
         password: this.loginForm.controls['password'].value,
       }),
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Status: ${res.status}`);
-        }
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         this.userData.updateLoggedInUser(data);
         if (data.admin) {

@@ -11,6 +11,7 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import { NavbarComponent } from './navbar/navbar.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { TextInputComponent } from './text-input/text-input.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TextInputComponent } from './text-input/text-input.component';
     NavbarComponent,
     OverlayComponent,
     TextInputComponent,
+    UsersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

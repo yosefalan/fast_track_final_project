@@ -1,12 +1,12 @@
 .modal {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   left: 1%;
   overflow: auto; /* Enable scroll if needed */
-  left: 1%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .modal-content {
@@ -15,25 +15,52 @@
   /* padding: 20px;
   border: 1px solid #888; */
   /* width: 80%; Could be more or less, depending on screen size */
-  position:absolute;
-	left:50%;
-	top:50%;
-	transform: translate(-50%,-50%);
-  background-color: rgba(0, 0, 0, 0.89);
-	border-radius:3px;
-	padding:20px 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0c2d45;
+  border-radius: 7px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
 }
 
-.box{
-	position:absolute;
-	left:50%;
-	top:50%;
-	transform: translate(-50%,-50%);
-    background-color: rgba(0, 0, 0, 0.89);
-	border-radius:3px;
-	padding:70px 100px;
+.box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.89);
+  border-radius: 3px;
+  padding: 70px 100px;
 }
 
 .open-modal {
   display: block;
+}
+
+.modal-form {
+  margin-top: 40px;
+}
+
+.close-btn-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+img {
+  width: 20px;
+}
+
+.btn-link {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+  display: inline-block;
+  width: auto;
 }

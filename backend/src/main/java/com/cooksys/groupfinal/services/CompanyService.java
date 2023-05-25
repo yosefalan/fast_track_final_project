@@ -32,4 +32,6 @@ public interface CompanyService {
 
 	BasicUserDto addUser(Long companyId, UserRequestDto userRequestDto);
 
+	Set<CompanyDto> getAllCompanies();
+
 }

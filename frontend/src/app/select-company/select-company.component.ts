@@ -27,11 +27,17 @@ export class SelectCompanyComponent {
   ) {}
 
   ngOnInit(): void {
-    this.userData.loggedInUser.subscribe((user) => {
-      if (user === null) {
-        this.router.navigateByUrl('/');
-      } else this.companies = user.companies;
-    });
+    fetch('http://localhost:8080/company', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.companies=data
+      });
   }
 
   onSubmit(): void {

@@ -1,0 +1,61 @@
+.team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 960px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+  }
+  
+  .team-card {
+    width: 313px;
+    height: 241px;
+    background-color: #0b2d45;
+    border-radius: 4px;
+    overflow: hidden;
+    color: #ffffff;
+  }
+  
+  .card-header {
+    padding: 10px;
+    color: #ffffff;
+  }
+  
+  .card-divider {
+    border: none;
+    border-top: 1px solid #deb992;
+    margin: 5px 0;
+  }
+  
+  .card-title {
+    margin: 0;
+    font-size: 18px;
+    color: #ffffff;
+  }
+  
+  .card-subtitle {
+    margin: 0;
+    font-size: 14px;
+    
+    color: #ffffff;
+  }
+  
+  .card-body {
+    padding: 10px;
+    color: #ffffff;
+  }
+  
+  .member-bubble {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #1ba098;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  
+  .member-bubble p {
+    margin: 0;
+  }

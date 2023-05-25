@@ -1,18 +1,58 @@
 <app-navbar></app-navbar>
+
 <div *ngFor="let team of teams">
   <a [routerLink]="['/projects']" [queryParams]="{ teamId: team.id }" class="team-link">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ team.name }}</h4>
-        <p class="card-subtitle">{{ team.projects.length }} projects</p>
+        <p class="card-subtitle"># of Projects: {{ projectCountsPerTeam[team.id] }}</p>
       </div>
       <div class="card-body">
         <h5 class="card-title">Members</h5>
         <div *ngFor="let member of team.teammates" class="sub-card">
-          <p>Hello</p>
-          <p>{{ member.profile.firstName }}{{ member.profile.lastName.charAt(0)}} </p>
+          <p>{{ member.profile.firstName }} {{ member.profile.lastName.charAt(0)}}. </p>
         </div>
       </div>
     </div>
   </a>
 </div>
+
+<div *ngIf="user?.admin">
+    <ng-container>
+        <button
+          *ngIf="user && user.admin"
+          class="btn-link"
+          (click)="showNewTeamModal()"
+        >
+          New Team
+        </button>
+      </ng-container>
+</div>
+
+<app-overlay>
+    <div class="new-team-form-container">
+        <form
+            class="new-team"
+            [formGroup]="newTeamForm"
+            (ngSubmit)="onNewTeamFormSubmit()"
+        >
+            <app-text-input
+            [control]="$any(newTeamForm.get('name'))"
+            label="Name"
+            ></app-text-input>
+            <app-text-input
+            [control]="$any(newTeamForm.get('description'))"
+            label="Description"
+            ></app-text-input>
+            <br />
+            <button
+            class="inputs button"
+            type="submit"
+            [disabled]="newTeamForm.invalid"
+            >
+            Submit
+            </button>
+        </form>
+
+    </div>
+</app-overlay>

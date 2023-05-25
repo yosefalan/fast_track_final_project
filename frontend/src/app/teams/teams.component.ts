@@ -138,6 +138,8 @@ export class TeamsComponent {
     this.selectedMembers = this.availableMembers.filter(
       (member) => selectedMemberIds.includes(member.id)
     );
+    console.log("selected members: ", selectedMemberIds);
+    console.log("available members: ", this.availableMembers);
   }
 
   removeSelectedMember(memberId: number): void {
@@ -145,13 +147,15 @@ export class TeamsComponent {
     const index = selectedMemberIds.indexOf(memberId);
     if (index !== -1) {
       selectedMemberIds.splice(index, 1);
-      this.selectedMembers = this.selectedMembers.filter(
-        (member) => member.id !== memberId
-      );
-    }
+        this.selectedMembers = this.selectedMembers.filter(
+          (member) => member.id !== memberId
+        );
+      }
+      console.log("selected members: ", selectedMemberIds);
+      console.log("available members: ", this.availableMembers);
   }
 
-  showNewTeamModal(): void {
+  showNewTeamModal() {
     console.log("show new team form modal");
     show();
   }

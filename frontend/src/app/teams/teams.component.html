@@ -1,5 +1,51 @@
 <app-navbar></app-navbar>
 
+<app-overlay>
+    <div class="new-team-form-container">
+        <form
+            class="new-team"
+            [formGroup]="newTeamForm"
+            (ngSubmit)="onNewTeamFormSubmit()"
+        >
+            <app-text-input
+            [control]="$any(newTeamForm.get('name'))"
+            label="Name"
+            ></app-text-input>
+
+            <app-text-input
+            [control]="$any(newTeamForm.get('description'))"
+            label="Description"
+            ></app-text-input>
+
+            <div class="members-dropdown">
+                <h2>Select Members</h2>
+                <label for="members">Pick an option:</label>
+                <select id="members" formControlName="members" (change)="updateSelectedMembers()" multiple>
+                  <option *ngFor="let member of availableMembers" [value]="member.id">{{ member.profile.firstName }} {{ member.profile.lastName.charAt(0) }}.</option>
+                </select>
+            </div>
+
+            <div class="selected-members">
+                <span *ngFor="let member of selectedMembers" class="selected-member">
+                    {{ member.profile.firstName }} {{ member.profile.lastName.charAt(0) }}.
+                    <button class="remove-member" (click)="removeSelectedMember(member.id)">X</button>
+                </span>
+
+            </div>
+
+            <br />
+            <button
+            class="inputs button"
+            type="submit"
+            [disabled]="newTeamForm.invalid"
+            >
+            Submit
+            </button>
+        </form>
+
+    </div>
+</app-overlay>
+
 <div *ngFor="let team of teams">
   <a [routerLink]="['/projects']" [queryParams]="{ teamId: team.id }" class="team-link">
     <div class="card">
@@ -29,30 +75,4 @@
       </ng-container>
 </div>
 
-<app-overlay>
-    <div class="new-team-form-container">
-        <form
-            class="new-team"
-            [formGroup]="newTeamForm"
-            (ngSubmit)="onNewTeamFormSubmit()"
-        >
-            <app-text-input
-            [control]="$any(newTeamForm.get('name'))"
-            label="Name"
-            ></app-text-input>
-            <app-text-input
-            [control]="$any(newTeamForm.get('description'))"
-            label="Description"
-            ></app-text-input>
-            <br />
-            <button
-            class="inputs button"
-            type="submit"
-            [disabled]="newTeamForm.invalid"
-            >
-            Submit
-            </button>
-        </form>
 
-    </div>
-</app-overlay>

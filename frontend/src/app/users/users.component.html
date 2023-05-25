@@ -1,77 +1,91 @@
+
 <app-navbar></app-navbar>
-<app-overlay>
-    <form class="new-announcement"
-      [formGroup]="addUserForm"
-      (ngSubmit)="onAddUserFormSubmit()"
-      >
+<div class="page-container">
+    <app-overlay class="overlay">
+        <form class="form"
+        [formGroup]="addUserForm"
+        (ngSubmit)="onAddUserFormSubmit()"
+        >
+        <span class="text-center">Add User</span>
 
-      <app-text-input
-        [control]="$any(addUserForm.get('firstName'))"
-        label="First Name"
-      ></app-text-input>
-      <app-text-input
-        [control]="$any(addUserForm.get('lastName'))"
-        label="Last Name"
-      ></app-text-input>
-      <app-text-input
-        [control]="$any(addUserForm.get('email'))"
-        label="Email"
-      ></app-text-input>
-      <app-text-input
-        [control]="$any(addUserForm.get('phone'))"
-        label="Phone"
-      ></app-text-input>
-      <app-text-input
-        [control]="$any(addUserForm.get('password'))"
-        label="Password"
-      ></app-text-input>
-      <app-text-input
-        [control]="$any(addUserForm.get('confirmPassword'))"
-        label="Confirm Password"
-      ></app-text-input>
+        <app-text-input
+            [control]="$any(addUserForm.get('firstName'))"
+            label="First Name"
+            placeholder="first name"
+        ></app-text-input>
+        <app-text-input
+            [control]="$any(addUserForm.get('lastName'))"
+            label="Last Name"
+            placeholder="last name"
+        ></app-text-input>
+        <app-text-input
+            [control]="$any(addUserForm.get('email'))"
+            label="Email"
+        ></app-text-input>
+        <app-text-input
+            [control]="$any(addUserForm.get('phone'))"
+            label="Phone"
+        ></app-text-input>
+        <app-text-input
+            [control]="$any(addUserForm.get('password'))"
+            label="Password"
+        ></app-text-input>
+        <app-text-input
+            [control]="$any(addUserForm.get('confirmPassword'))"
+            label="Confirm Password"
+        ></app-text-input>
 
-    <select
-        name="isAdmin"
-        class="custom-select"
-        formControlName="isAdmin">
-        <option class="" value="" disabled>Pick an option</option>
-        <option class="" [ngValue]="true">Yes</option>
-        <option class="" [ngValue]="false">No</option>
-    </select>
+        <span class="admin-label">Make user an admin role?</span>
 
-  <button
-        class="inputs button"
-        type="submit"
-        [disabled]="addUserForm.invalid"
-      >
-        Submit
-      </button>
+        <select
+            name="isAdmin"
+            class="custom-select"
+            formControlName="isAdmin">
+            <option class="" value="" disabled>Pick an option</option>
+            <option class="" [ngValue]="true">Yes</option>
+            <option class="" [ngValue]="false">No</option>
+        </select>
 
-    </form>
-  </app-overlay>
+    <button
+            class="btn"
+            type="submit"
+            [disabled]="addUserForm.invalid"
+        >
+            Submit
+        </button>
 
-<h1>User Registry</h1>
-<table>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Active</th>
-      <th>Admin</th>
-      <th>Status</th>
-    </tr>
-    <tr *ngFor="let employee of employees">
-      <td>{{employee.profile.firstName}} {{employee.profile.lastName}}</td>
-      <td>{{employee.profile.email}}</td>
-      <ng-container *ngIf="employee.active == true"><td style="color: #32CD32">YES</td></ng-container>
-      <ng-container *ngIf="employee.active == false"><td style="color: red;">NO</td></ng-container>
-      <ng-container *ngIf="employee.admin == true"><td style="color: #32CD32;">YES</td></ng-container>
-      <ng-container *ngIf="employee.admin == false"><td style="color: red;">NO</td></ng-container>
-      <td>{{employee.status}}</td>
-    </tr>
-  </table>
+        </form>
+    </app-overlay>
 
-  
+    <h1>User Registry</h1>
+    <p> A general view of all your members in your organization</p>
+    <table>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Team</th>
+        <th>Active</th>
+        <th>Admin</th>
+        <th>Status</th>
+        </tr>
+        <tr *ngFor="let employee of employees">
+        <td>{{employee.profile.firstName}} {{employee.profile.lastName}}</td>
+        <td>{{employee.profile.email}}</td>
+        <ng-container *ngIf="employee.teams.length === 0"><td> </td></ng-container>
+        <ng-container *ngIf="employee.teams.length > 0"><td>{{employee.teams[0].name}}</td></ng-container>
+        <ng-container *ngIf="employee.active == true"><td style="color: #32CD32">YES</td></ng-container>
+        <ng-container *ngIf="employee.active == false"><td style="color: red;">NO</td></ng-container>
+        <ng-container *ngIf="employee.admin == true"><td style="color: #32CD32;">YES</td></ng-container>
+        <ng-container *ngIf="employee.admin == false"><td style="color: red;">NO</td></ng-container>
+        <td>{{employee.status}}</td>
+        </tr>
+    </table>
 
-  <div class="button-container">
-    <button (click)="showAddUserModal()">Add User</button>
-  </div>  
+    
+
+    <div class="button-container">
+        <button class="add-user-button" (click)="showAddUserModal()">Add User</button>
+    </div>
+
+</div>
+   

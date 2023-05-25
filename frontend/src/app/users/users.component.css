@@ -106,9 +106,10 @@ table {
 .admin-label{
     color:#fff;
     display: block;
-    font-size: 19px;
-    /* margin: -50px 0 50px 0; */
+    font-size: 16px;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
   

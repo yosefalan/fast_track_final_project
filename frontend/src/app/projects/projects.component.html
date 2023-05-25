@@ -1,47 +1,64 @@
 <app-navbar></app-navbar>
-<div>
-  <button (click)="goBack()">Back</button>
-  <h1>Projects for {{ teamName }} </h1>
-  <button *ngIf="user?.admin === true" (click)="showProjectModal()">New</button>
-
-  <div *ngFor="let project of projects">
-    <h2>{{ project.name }}</h2>
-    <p>{{ project.active ? 'Active' : 'Inactive' }}</p>
-    <p>{{ project.description }}</p>
-    <button (click)="showProjectModal()">Edit</button>
-    <app-overlay>
-      <div class="new-announcement-form-container">
-        <form
-          class="new-announcement"
-          [formGroup]="editProjectForm"
-          (ngSubmit)="projectFormSubmit()"
-        >
-          <app-text-input
-            [control]="$any(editProjectForm.get('name'))"
-            label="Project Name"
-          ></app-text-input>
-          <app-text-input
-            [control]="$any(editProjectForm.get('description'))"
-            label="Project Description"
-          ></app-text-input>
-          <br />
-          <ng-container *ngIf="user?.admin === true">
-            <!-- <ng-container> -->
-            <label for="activeSelect">Active?</label>
-            <select id="activeSelect">
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
-          </ng-container>
-          <button
-            class="inputs button"
-            type="submit"
-            [disabled]="editProjectForm.invalid"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    </app-overlay>
+<div class="projects">
+  <div class="projects-heading">
+    <div class="projects-heading-left">
+      <button (click)="goBack()">&lt; Back</button>
+    </div>
+    <div class="projects-heading-right">
+    <h1>Projects for {{ teamName }} </h1>
+    </div>
   </div>
+  <div class="projects-body">
+    <button *ngIf="user?.admin === true" (click)="showProjectModal()">New</button>
+    <div *ngFor="let project of projects" class="project">
+      <div class="project-left">
+        <div class="project-heading">
+          <h2>{{ project.name }}</h2>
+          <p [ngClass]="{'active': project.active, 'inactive': !project.active}">
+            {{ project.active ? 'Active' : 'Inactive' }}</p>
+        </div>
+        <div class="project-body">
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+      <div class="project-right">
+        <button (click)="showProjectModal()">Edit</button>
+      </div>
+    </div>
+  </div>
+
+  <app-overlay>
+    <div class="new-announcement-form-container">
+      <form
+        class="new-announcement"
+        [formGroup]="editProjectForm"
+        (ngSubmit)="projectFormSubmit()"
+      >
+        <app-text-input
+          [control]="$any(editProjectForm.get('name'))"
+          label="Project Name"
+        ></app-text-input>
+        <app-text-input
+          [control]="$any(editProjectForm.get('description'))"
+          label="Project Description"
+        ></app-text-input>
+        <br />
+        <ng-container *ngIf="user?.admin === true">
+          <!-- <ng-container> -->
+          <label for="activeSelect">Active?</label>
+          <select id="activeSelect">
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+        </ng-container>
+        <button
+          class="inputs button"
+          type="submit"
+          [disabled]="editProjectForm.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </app-overlay>
 </div>

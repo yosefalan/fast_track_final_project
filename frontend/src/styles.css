@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+
+body {
+  /* font-family: 'Figtree', sans-serif; */
+  font-family: 'Mulish', sans-serif;
+  color: white;
+  position: absolute;
+  color: #FFFFFF;
+  background-color: #051622;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

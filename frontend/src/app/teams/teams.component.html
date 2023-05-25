@@ -51,12 +51,14 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ team.name }}</h4>
+
         <p class="card-subtitle"># of Projects: {{ projectCountsPerTeam[team.id] }}</p>
       </div>
       <div class="card-body">
         <h5 class="card-title">Members</h5>
         <div *ngFor="let member of team.teammates" class="sub-card">
           <p>{{ member.profile.firstName }} {{ member.profile.lastName.charAt(0)}}. </p>
+
         </div>
       </div>
     </div>

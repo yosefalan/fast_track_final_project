@@ -1,19 +1,24 @@
 <nav
-style="
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  color: blueviolet;
-  border-bottom: 3px solid black;
-"
+  style="
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: blueviolet;
+    border-bottom: 3px solid black;
+  "
 >
-<div>
-  <ng-container *ngIf="isAdmin">ACTING AS ADMIN</ng-container>
-  <a routerLink="/announcements" style="margin-right: 10px;">Home</a>
-  <ng-container *ngIf="isAdmin"><a routerLink="/select-company" style="margin-right: 10px;">Company</a></ng-container>
-  <a routerLink="/teams" style="margin-right: 10px;">Teams</a>
-  <ng-container *ngIf="isAdmin"><a routerLink="/users" style="margin-right: 10px;">Users</a></ng-container>
-  <a routerLink="/" (click)="logout()" style="margin-right: 10px;">Logout</a>
-  <a routerLink="/projects"  style="margin-right: 10px;">Projects(TEMPORARY)</a>
-</div>
+  <div>
+    <ng-container *ngIf="isAdmin">ACTING AS ADMIN</ng-container>
+    <a routerLink="/announcements" style="margin-right: 10px">Home</a>
+    <ng-container *ngIf="isAdmin"
+      ><a routerLink="/select-company" style="margin-right: 10px"
+        >Company</a
+      ></ng-container
+    >
+    <a routerLink="/teams" style="margin-right: 10px">Teams</a>
+    <ng-container *ngIf="isAdmin"
+      ><a routerLink="/users" style="margin-right: 10px">Users</a></ng-container
+    >
+    <a routerLink="/" (click)="logout()" style="margin-right: 10px">Logout</a>
+  </div>
 </nav>

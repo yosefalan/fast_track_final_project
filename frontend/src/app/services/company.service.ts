@@ -8,12 +8,23 @@ import Company from '../models/Company';
 export class CompanyService {
   private selectedCompanySource = new BehaviorSubject<Company | null>(null);
   selectedCompany = this.selectedCompanySource.asObservable();
+  private localStorageKey = 'selectedCompany';
 
-  updateselectedCompany(company: Company) {
-    this.selectedCompanySource.next(company);
+
+  constructor() {
+    const savedCompany = localStorage.getItem(this.localStorageKey);
+    if (savedCompany) {
+      this.selectedCompanySource.next(JSON.parse(savedCompany));
+    }
   }
 
-  getCompanyId(): number | null {
-    return this.selectedCompanySource.value?.id ?? null;
+   updateselectedCompany(company: Company) {
+    this.selectedCompanySource.next(company);
+    localStorage.setItem(this.localStorageKey, JSON.stringify(company));
+  }
+
+  clearSelectedCompany() {
+    this.selectedCompanySource.next(null);
+    localStorage.removeItem(this.localStorageKey);
   }
 }

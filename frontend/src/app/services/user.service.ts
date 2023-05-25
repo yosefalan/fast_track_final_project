@@ -18,6 +18,7 @@ export class UserService {
       this.isLoggedIn = true;
     }
   }
+
   updateLoggedInUser(userData: User) {
     this.loggedInUserSource.next(userData);
     this.isLoggedIn = true;

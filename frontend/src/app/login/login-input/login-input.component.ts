@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class LoginInputComponent {
   @Input() control: FormControl = new FormControl();
-  @Input() label: string = '';
+  @Input() label?: string = '';
 
   constructor() {}
 }

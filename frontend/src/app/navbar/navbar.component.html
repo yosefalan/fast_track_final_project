@@ -1,16 +1,13 @@
 <nav>
-    <ng-container *ngIf="isAdmin" class="admin">ACTING AS ADMIN</ng-container>
+    <img src="../../assets/logo.png" />
+    <div class="admin">
+      <ng-container *ngIf="isAdmin">ACTING AS ADMIN</ng-container>
+    </div>
     <div class="link-container">
       <a routerLink="/announcements" style="margin-right: 15px;">Home</a>
-      <ng-container *ngIf="isAdmin"
-        ><a routerLink="/select-company" style="margin-right: 15px"
-          >Company</a
-        ></ng-container
-      >
+      <ng-container *ngIf="isAdmin"><a routerLink="/select-company" style="margin-right: 15px">Company</a></ng-container>
       <a routerLink="/teams" style="margin-right: 15px;">Teams</a>
-      <ng-container *ngIf="isAdmin"
-        ><a routerLink="/users" style="margin-right: 15px;">Users</a></ng-container
-      >
+      <ng-container *ngIf="isAdmin"><a routerLink="/users" style="margin-right: 15px;">Users</a></ng-container>
       <a routerLink="/" (click)="logout()" style="margin-right: 15px;">Logout</a>
     </div>
 </nav>

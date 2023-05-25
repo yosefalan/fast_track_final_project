@@ -1,5 +1,6 @@
 package com.cooksys.groupfinal.mappers;
 
+import java.util.List;
 import java.util.Set;
 
 import org.mapstruct.Mapper;
@@ -13,7 +14,7 @@ public interface FullUserMapper {
 	
 	FullUserDto entityToFullUserDto(User user);
 
-  Set<FullUserDto> entitiesToFullUserDtos(Set<User> users);
+  List<FullUserDto> entitiesToFullUserDtos(List<User> users);
 
   User requestDtoToEntity(UserRequestDto userRequestDto);
 

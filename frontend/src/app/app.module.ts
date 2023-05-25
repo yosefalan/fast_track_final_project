@@ -15,6 +15,8 @@ import { TextInputComponent } from './text-input/text-input.component';
 import { UsersComponent } from './users/users.component';
 import { TeamsComponent } from './teams/teams.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnnouncementCardComponent } from './announcements/announcement-card/announcement-card.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     TextInputComponent,
     UsersComponent,
     TeamsComponent
+    AnnouncementCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

@@ -1,14 +1,7 @@
 package com.cooksys.groupfinal.services;
 
+import java.util.List;
 import java.util.Set;
-
-
-import com.cooksys.groupfinal.dtos.AnnouncementDto;
-import com.cooksys.groupfinal.dtos.FullUserDto;
-import com.cooksys.groupfinal.dtos.ProjectDto;
-import com.cooksys.groupfinal.dtos.ProjectRequestDto;
-import com.cooksys.groupfinal.dtos.TeamDto;
-import com.cooksys.groupfinal.dtos.TeamRequestDto;
 
 import com.cooksys.groupfinal.dtos.*;
 import com.cooksys.groupfinal.entities.Announcement;
@@ -19,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface CompanyService {
 
-	Set<FullUserDto> getAllUsers(Long id);
+	List<FullUserDto> getAllUsers(Long id);
 
-	Set<AnnouncementDto> getAllAnnouncements(Long id);
+	List<AnnouncementDto> getAllAnnouncements(Long id);
 
 	Set<TeamDto> getAllTeams(Long id);
 
@@ -36,5 +29,7 @@ public interface CompanyService {
 	ProjectDto postProject(Long companyId, Long teamId, Project project);
 
 	FullUserDto deleteUser(Long companyId, Long userId);
+
+	BasicUserDto addUser(Long companyId, UserRequestDto userRequestDto);
 
 }

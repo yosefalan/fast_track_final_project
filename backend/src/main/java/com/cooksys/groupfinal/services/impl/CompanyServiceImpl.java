@@ -1,14 +1,10 @@
 package com.cooksys.groupfinal.services.impl;
 
+import com.cooksys.groupfinal.mappers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -16,36 +12,14 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.cooksys.groupfinal.dtos.*;
-import com.cooksys.groupfinal.entities.*;
 import com.cooksys.groupfinal.exceptions.BadRequestException;
-import com.cooksys.groupfinal.exceptions.NotAuthorizedException;
-import com.cooksys.groupfinal.mappers.*;
 import com.cooksys.groupfinal.repositories.*;
 import org.springframework.stereotype.Service;
-
-
-import com.cooksys.groupfinal.dtos.AnnouncementDto;
-import com.cooksys.groupfinal.dtos.FullUserDto;
-import com.cooksys.groupfinal.dtos.ProjectDto;
-import com.cooksys.groupfinal.dtos.ProjectRequestDto;
-import com.cooksys.groupfinal.dtos.TeamDto;
-import com.cooksys.groupfinal.dtos.TeamRequestDto;
 import com.cooksys.groupfinal.entities.Announcement;
 import com.cooksys.groupfinal.entities.Company;
 import com.cooksys.groupfinal.entities.Project;
 import com.cooksys.groupfinal.entities.Team;
 import com.cooksys.groupfinal.entities.User;
-import com.cooksys.groupfinal.exceptions.BadRequestException;
-import com.cooksys.groupfinal.exceptions.NotFoundException;
-import com.cooksys.groupfinal.mappers.AnnouncementMapper;
-import com.cooksys.groupfinal.mappers.ProjectMapper;
-import com.cooksys.groupfinal.mappers.TeamMapper;
-import com.cooksys.groupfinal.mappers.FullUserMapper;
-import com.cooksys.groupfinal.repositories.CompanyRepository;
-import com.cooksys.groupfinal.repositories.ProjectRepository;
-import com.cooksys.groupfinal.repositories.TeamRepository;
-import com.cooksys.groupfinal.repositories.UserRepository;
-
 import com.cooksys.groupfinal.exceptions.NotFoundException;
 
 import com.cooksys.groupfinal.services.CompanyService;
@@ -65,6 +39,9 @@ public class CompanyServiceImpl implements CompanyService {
 	private final TeamMapper teamMapper;
 	private final ProjectMapper projectMapper;
 	private final AnnouncementRepository announcementRepository;
+	private final ProfileMapper profileMapper;
+	private final CredentialsMapper credentialsMapper;
+	private final BasicUserMapper basicUserMapper;
 
 	
 	
@@ -114,21 +91,20 @@ public class CompanyServiceImpl implements CompanyService {
 
 	
 	@Override
-	public Set<FullUserDto> getAllUsers(Long id) {
+	public List<FullUserDto> getAllUsers(Long id) {
 		Company company = findCompany(id);
-		Set<User> filteredUsers = new HashSet<>();
+		List<User> filteredUsers = new ArrayList<>();
 		company.getEmployees().forEach(filteredUsers::add);
 		filteredUsers.removeIf(user -> !user.isActive());
 		return fullUserMapper.entitiesToFullUserDtos(filteredUsers);
 	}
 
 	@Override
-	public Set<AnnouncementDto> getAllAnnouncements(Long id) {
+	public List<AnnouncementDto> getAllAnnouncements(Long id) {
 		Company company = findCompany(id);
 		List<Announcement> sortedList = new ArrayList<Announcement>(company.getAnnouncements());
 		sortedList.sort(Comparator.comparing(Announcement::getDate).reversed());
-		Set<Announcement> sortedSet = new HashSet<Announcement>(sortedList);
-		return announcementMapper.entitiesToDtos(sortedSet);
+		return announcementMapper.entitiesToDtos(sortedList);
 	}
 
 	@Override
@@ -248,6 +224,26 @@ public class CompanyServiceImpl implements CompanyService {
 		teamRepository.saveAllAndFlush(company.getTeams());
 
 		return fullUserMapper.entityToFullUserDto(userToDelete);
+
+	}
+
+	public BasicUserDto addUser(Long companyId, UserRequestDto userRequestDto){
+		Company company = findCompany(companyId);
+
+		User user = new User();
+		user.getCompanies().add(company);
+		user.setCompanies(user.getCompanies());
+		user.setAdmin(userRequestDto.isAdmin());
+		user.setActive(true);
+		user.setProfile(profileMapper.dtoToEntity(userRequestDto.getProfile()));
+		user.setCredentials(credentialsMapper.dtoToEntity(userRequestDto.getCredentials()));
+
+		userRepository.saveAndFlush(user);
+		company.getEmployees().add(user);
+
+		companyRepository.saveAndFlush(company);
+
+		return basicUserMapper.entityToBasicUserDto(user);
 
 	}
 

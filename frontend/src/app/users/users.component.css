@@ -1,25 +1,123 @@
 h1{
     text-align: center;
+    color: #1BA098;
 }
+.page-container{
+    background-color: rgb(5, 22, 34);
+    padding-bottom: 80px;
+}
+
+p{
+    text-align: center;
+    color: #1BA098;
+}
+
 table {
     font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 50%;
+    border-radius: 20px;
+    border: 0.1em solid rgb(222, 185, 146);
+    width: 80%;
     margin-right: auto;
     margin-left: auto;
+    background-color: rgb(5, 22, 34)
   }
   
   td, th {
-    border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    margin-left: 10px;
+  }
+
+  th{
+    color: white;
+    padding-left: 30px;
+    border:none;
   }
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
+  tr {
+    background-color: transparent;
+    border-bottom: 0.1em solid rgb(222, 185, 146);
   }
 
   .button-container{
     margin-top: 30px;
-    margin-left: 25%;
+    padding-left: 10%;
   }
+
+  td{
+    color: rgb(222, 185, 146);
+    padding-left: 30px;
+    border-top: 0.1em solid rgb(222, 185, 146);
+  }
+
+  .add-user-button{
+    background-color: #1BA098;
+    height: 30px;
+    width: 90px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+  }
+
+  .btn{
+    background-color: #1BA098;
+    height: 30px;
+    width: 90px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    margin-top:50px;
+	cursor:pointer;
+	position:relative;
+  }
+
+  body{
+    background-color: rgb(5, 22, 34);
+  }
+
+  .form {
+	margin:10px auto;
+	max-width: 400px;
+	padding: 20px 12px 10px 20px;
+	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+
+
+  .custom-select{
+    border: none;
+    border-bottom:1px solid #555;  
+    background:transparent;
+    width:100%;
+    padding:8px 0 5px 0;
+    font-size: 16px;
+    color:#fff;
+    outline:none;
+  }
+
+  .text-center{
+	color:#fff;	
+	text-transform:uppercase;
+    font-size: 23px;
+    margin: -50px 0 50px 0;
+    display: block;
+    text-align: center;
+}
+
+.admin-label{
+    color:#fff;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+  
+
+  
+
+
+
+
+
+  

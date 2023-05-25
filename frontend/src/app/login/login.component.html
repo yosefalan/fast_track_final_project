@@ -1,25 +1,27 @@
 <div class="login-page">
   <h1>COOK SYSTEMS</h1>
   <h2>A FINAL APP</h2>
-  <div class="login-form-container">
-    <img src="../../assets/logo.png" />
+  <div class="login-container">
+    <div clas="img">
+      <img src="../../assets/logo.png" />
+    </div>
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <app-login-input
-        [control]="$any(loginForm.get('username'))"
-        label="Username"
-      ></app-login-input>
-      <app-login-input
-        [control]="$any(loginForm.get('password'))"
-        label="Password"
-      ></app-login-input>
-      <br />
-      <button
-        class="inputs button"
-        type="submit"
-        [disabled]="loginForm.invalid"
-      >
-        Login
-      </button>
+      <div class="login-form-container">
+        <app-login-input
+          [control]="$any(loginForm.get('username'))"
+        ></app-login-input>
+        <app-login-input
+          [control]="$any(loginForm.get('password'))"
+        ></app-login-input>
+        <br />
+        <button
+          class="inputs button"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </div>
     </form>
   </div>
 </div>

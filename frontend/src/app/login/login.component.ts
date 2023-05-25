@@ -13,11 +13,11 @@ export class LoginComponent {
   user: User | null = null;
 
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl<string>('', [
+    username: new FormControl<string>('thisismycompany', [
       Validators.required,
       Validators.minLength(1),
     ]),
-    password: new FormControl<string>('', [
+    password: new FormControl<string>('getyourowncompany', [
       Validators.required,
       Validators.minLength(1),
     ]),

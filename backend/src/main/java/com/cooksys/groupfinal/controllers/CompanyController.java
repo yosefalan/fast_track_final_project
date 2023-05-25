@@ -20,6 +20,11 @@ import lombok.RequiredArgsConstructor;
 public class CompanyController {
 
 	private final CompanyService companyService;
+	
+	@GetMapping()
+	public Set<CompanyDto> getAllCompanies() {
+		return companyService.getAllCompanies();
+	}
 
 	@GetMapping("/{id}/users")
     public List<FullUserDto> getAllUsers(@PathVariable Long id) {

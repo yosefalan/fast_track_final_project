@@ -12,4 +12,8 @@ export class CompanyService {
   updateselectedCompany(company: Company) {
     this.selectedCompanySource.next(company);
   }
+
+  getCompanyId(): number | null {
+    return this.selectedCompanySource.value?.id ?? null;
+  }
 }

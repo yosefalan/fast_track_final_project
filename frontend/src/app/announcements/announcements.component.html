@@ -15,13 +15,16 @@
         label="Message"
       ></app-text-input>
       <br />
-      <button
-        class="inputs button"
-        type="submit"
-        [disabled]="newAnnouncementForm.invalid"
-      >
-        Submit
-      </button>
+      <div class="submit-btn-container">
+        <button
+          class="inputs button"
+          id="modal-submit-btn"
+          type="submit"
+          [disabled]="newAnnouncementForm.invalid"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   </div>
 </app-overlay>

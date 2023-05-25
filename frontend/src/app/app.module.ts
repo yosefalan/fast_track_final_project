@@ -17,7 +17,6 @@ import { TeamsComponent } from './teams/teams.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnnouncementCardComponent } from './announcements/announcement-card/announcement-card.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +32,12 @@ import { AnnouncementCardComponent } from './announcements/announcement-card/ann
     TeamsComponent,
     AnnouncementCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

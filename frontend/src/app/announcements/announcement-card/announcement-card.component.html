@@ -1,7 +1,7 @@
 <div class="announcement">
   <div class="announcement-header">
     <h4>{{ announcement.author.profile.firstName }}</h4>
-    <h4>{{ announcement.date }}</h4>
+    <h4>{{ announcement.date | date : "longDate" }}</h4>
   </div>
   <div class="announcement-text">
     <h3>{{ announcement.title }}</h3>

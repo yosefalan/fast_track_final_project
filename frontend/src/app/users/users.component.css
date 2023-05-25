@@ -66,6 +66,7 @@ table {
     color: white;
     font-size: 18px;
     text-align: center;
+    cursor: pointer;
   }
 
   .btn{
@@ -79,6 +80,18 @@ table {
 	cursor:pointer;
 	position:relative;
   }
+
+  .btn:disabled, .btn[disabled]{
+    background-color: #cccccc;
+    height: 30px;
+    width: 90px;
+    border: none;
+    border-radius: 12px;
+    color: rgb(19, 16, 16);
+    margin-top:50px;
+	cursor: not-allowed;
+	position:relative;
+}
 
   body{
     background-color: rgb(5, 22, 34);

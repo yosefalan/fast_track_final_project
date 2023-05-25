@@ -1,0 +1,26 @@
+.projects {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-heading {
+  color: #1ba098;
+  display: flex;
+}
+
+.projects-heading-left {
+  width: 25vw;
+  display: flex;
+  align-items: center;
+}
+
+.projects-heading-left button {
+  background-color: #051622;
+  color: #1ba098;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+a{
+    text-decoration: none;
+    float: right;
+    color: #1BA098
+}
+
+nav{
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: red; 
+    border-bottom: 3px solid black;
+}
+
+.link-container{
+    width: 80%;
+}
+

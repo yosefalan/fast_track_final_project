@@ -1,15 +1,22 @@
 h1{
     text-align: center;
     color: #1BA098;
+    margin-top: 5%;
 }
 .page-container{
-    background-color: rgb(5, 22, 34);
-    padding-bottom: 80px;
+    background-color: #051622;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 p{
     text-align: center;
     color: #1BA098;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 table {
@@ -41,7 +48,7 @@ table {
 
   .button-container{
     margin-top: 30px;
-    padding-left: 10%;
+    margin-left: -70%;
   }
 
   td{
@@ -52,11 +59,13 @@ table {
 
   .add-user-button{
     background-color: #1BA098;
-    height: 30px;
-    width: 90px;
+    height: 40px;
+    width: 120px;
     border: none;
     border-radius: 12px;
     color: white;
+    font-size: 18px;
+    text-align: center;
   }
 
   .btn{

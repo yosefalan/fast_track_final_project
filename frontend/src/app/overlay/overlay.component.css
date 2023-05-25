@@ -4,6 +4,7 @@
   z-index: 1; /* Sit on top */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
+  left: 1%;
   overflow: auto; /* Enable scroll if needed */
   left: 1%;
 }

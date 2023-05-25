@@ -1,9 +1,9 @@
-.team-card-container {
+/* .team-card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
-    max-width: 960px; /* Adjust the maximum width as needed */
+    max-width: 960px; 
     margin: 0 auto;
   }
   
@@ -59,3 +59,83 @@
   .member-bubble p {
     margin: 0;
   }
+   */
+.card-container {
+  background-color: #051622;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+.outer-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card {
+  background-color: #0B2D45;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 20px;
+  padding: 10px;
+  /* border: 1px solid white; */
+}
+
+.card-header {
+  color: #E0E5E8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 5px 10px; */
+  border-bottom: 1px solid #E0E5E8;
+}
+
+.card-header h4 {
+  font-size: 18px;
+  padding: 0px 15px;
+}
+
+.card-header p {
+  font-size: 10px;
+  padding: 0px 15px;
+  font-weight: 200;
+}
+
+.card-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+}
+
+.card-title {
+  grid-column: span 2;
+  color: #E0E5E8;
+  margin: 15px 0px 5px;
+  font-weight: 200;
+}
+.sub-card {
+  background-color: #1BA098;
+  grid-column: span 1;
+  border-radius: 5px;
+  color: #E0E5E8;
+  font-weight: 200;
+}
+
+.sub-card p {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}

@@ -72,20 +72,3 @@ h3 {
   font-style: normal;
   font-weight: 400;
 }
-
-.img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-img {
-  width: 8em;
-}
-
-.login-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}

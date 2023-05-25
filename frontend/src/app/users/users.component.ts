@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CompanyService } from '../services/company.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Company from '../models/Company';
-import BasicUser from '../models/BasicUser';
-import Profile from '../models/Profile';
 import User from '../models/User';
-import Team from '../models/Team';
 import { show } from '../overlay/helper';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -21,27 +17,27 @@ export class UsersComponent {
   employees: User[] = [];
 
   addUserForm: FormGroup = new FormGroup({
-    firstName: new FormControl<string>('test', [
+    firstName: new FormControl<string>("", [
       Validators.required,
       Validators.minLength(1),
     ]),
-    lastName: new FormControl<string>('test', [
+    lastName: new FormControl<string>("", [
       Validators.required,
       Validators.minLength(1),
     ]), 
-   email: new FormControl<string>('test@gmail.com', [
+   email: new FormControl<string>("", [
       Validators.required,
       Validators.minLength(1),
     ]),
-    phone: new FormControl<string>('1111111111', [
+    phone: new FormControl<string>("", [
       Validators.required,
       Validators.minLength(1),
     ]),
-    password: new FormControl<string>('hello', [
+    password: new FormControl<string>("", [
       Validators.required,
       Validators.minLength(1),
     ]),
-    confirmPassword: new FormControl<string>('hello', [
+    confirmPassword: new FormControl<string>("", [
       Validators.required,
       Validators.minLength(1),
     ]),
@@ -66,8 +62,7 @@ export class UsersComponent {
     this.companyData.selectedCompany.subscribe((company) => {
       if (company) {
         this.companyId = company.id;
-        this.employees = company.employees;
-        console.log(this.employees);
+        this.loadCompanyEmployees(company.id);
       }
     });
   }
@@ -86,7 +81,6 @@ export class UsersComponent {
       .then((res) => res.json())
       .then((data) => data);
     this.employees = response;
-    console.log(this.employees);
   }
 
   showAddUserModal() {
@@ -121,8 +115,7 @@ export class UsersComponent {
           }
           return res.json();
         })
-        .then((data) => {
-          console.log(data);
+        .then(() => {
           this.loadCompanyEmployees(this.companyId);
         }); 
     }

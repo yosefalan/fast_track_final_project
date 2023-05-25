@@ -41,7 +41,7 @@ export class UsersComponent {
       Validators.required,
       Validators.minLength(1),
     ]),
-    isAdmin: new FormControl<boolean>(false, [
+    isAdmin: new FormControl<boolean | string>("",[
       Validators.required,
     ]),
   });

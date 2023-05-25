@@ -6,22 +6,22 @@ import Company from '../models/Company';
 import Team from '../models/Team';
 import { CompanyService } from '../services/company.service';
 import { HttpClient } from '@angular/common/http';
-import { ProjectsComponent } from '../projects/projects.component'
-
+import { ProjectsComponent } from '../projects/projects.component';
 
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.css'],
 })
-
 export class TeamsComponent {
   user: User | null = null;
-  company: Company | null = null;
+  // company: Company | null = null;
   teamCards: any[] = [];
   projects: any[] = [];
-  teamId: number = 11;
-  companyId: number = 6;
+  teamId: number | null = null;
+  companyId: number | null = null;
+  teams: any[] | undefined;
+  userId: number | null = null;
 
   constructor(
     private router: Router,
@@ -31,59 +31,45 @@ export class TeamsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.companyData.selectedCompanyId.subscribe((company) => {
-      this.company = company;
-    });
     this.userData.loggedInUser.subscribe((user) => {
       this.user = user;
-      if (user === null) {
-        this.router.navigateByUrl('/');
-      } else if (user.admin === false) {
-        this.showWorkerTeams();
-      } else if (user.admin) {
-        this.showAdminTeams();
-      }
+      this.teams = this.user?.teams;
+      this.companyId = this.user?.companies[0].id ?? null;
+      this.userId = user?.id ?? null;
     });
-    this.fetchProjects();
+    this.fetchTeams();
+    this.fetchTeamsAdmin();
   }
 
-  showWorkerTeams(): void {
-    let numTeams = this.user?.teams.length || 0;
-    for (let i = 0; i < numTeams; i++) {
-      const teamCard: any = {
-        name: '',
-        numProjects: Number, //how to get this? there is an endpoint in companycontroller that gets all projects, but we really just need a number. maybe just add that property to the entity + model: numProjects
-        teammates: [],
-      };
-      teamCard.name = this.user?.teams[i].name;
-      teamCard.numProjects = 0;
-      teamCard.teammates = this.user?.teams[i].teammates;
-      this.teamCards.push(teamCard);
-    }
-  }
-
-  showAdminTeams(): void {
-    // fetch all teams for the given company
-    // create a card for each team (same as showWorkerTeams())
-    // show a new team button that opens a modal component
-  }
-
-  fetchProjects(): void {
-    if (!this.company || !this.user) {
-      return;
-    }
-
-    const teamId = this.teamId; // Replace with the actual team ID
-    const companyId = this.companyId; // Replace with the actual company ID
-
-    const url = `http://localhost:8080/company/${companyId}/teams/${teamId}/projects`;
+  fetchTeamsAdmin(): void {
+    const companyId = this.companyId;
+    const url = `http://localhost:8080/company/${companyId}/teams`;
 
     this.http.get<any[]>(url).subscribe(
       (response) => {
-        this.projects = response;
+        this.teams = response;
+        console.log('*******', response);
       },
       (error) => {
-        console.error('Error fetching projects:', error);
+        console.error('Error fetching teams:', error);
+      }
+    );
+  }
+
+  fetchTeams(): void {
+    console.log(this.user?.id);
+    const userId = this.userId;
+    console.log(typeof userId);
+
+    const url = `http://localhost:8080/users/${userId}/teams`;
+
+    this.http.get<any[]>(url).subscribe(
+      (response) => {
+        this.teams = response;
+        console.log(response);
+      },
+      (error) => {
+        console.error('Error fetching teams:', error);
       }
     );
   }

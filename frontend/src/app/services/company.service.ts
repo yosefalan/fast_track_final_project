@@ -6,10 +6,14 @@ import Company from '../models/Company';
   providedIn: 'root',
 })
 export class CompanyService {
-  private selectedCompanyIdSource = new BehaviorSubject<Company | null>(null);
-  selectedCompanyId = this.selectedCompanyIdSource.asObservable();
+  private selectedCompanySource = new BehaviorSubject<Company | null>(null);
+  selectedCompany = this.selectedCompanySource.asObservable();
 
-  updateSelectedCompanyId(company: Company) {
-    this.selectedCompanyIdSource.next(company);
+  updateselectedCompany(company: Company) {
+    this.selectedCompanySource.next(company);
+  }
+
+  getCompanyId(): number | null {
+    return this.selectedCompanySource.value?.id ?? null;
   }
 }

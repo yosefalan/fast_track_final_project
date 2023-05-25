@@ -23,7 +23,7 @@ export class ProjectsComponent {
 
   ngOnInit(): void {
     console.log("YO!")
-    this.companyService.selectedCompanyId.subscribe((company) => {
+    this.companyService.selectedCompany.subscribe((company) => {
 
     });
   }
@@ -41,6 +41,26 @@ export class ProjectsComponent {
     //     console.error('Error creating new project:', error);
     //   }
     // );
+
+ // fetchProjects(): void {
+  //   if (!this.company || !this.user) {
+  //     return;
+  //   }
+  //   const teamId = this.teamId;
+  //   const companyId = this.companyId;
+
+  //   const url = `http://localhost:8080/company/${companyId}/teams/${teamId}/projects`;
+
+  //   this.http.get<any[]>(url).subscribe(
+  //     (response) => {
+  //       this.projects = response;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching projects:', error);
+  //     }
+  //   );
+  // }
+
   }
 
   editProject(project: any): void {

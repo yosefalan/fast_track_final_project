@@ -34,41 +34,39 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
 public class CompanyController {
-	
+
 	private final CompanyService companyService;
-	
+
 	@GetMapping("/{id}/users")
     public Set<FullUserDto> getAllUsers(@PathVariable Long id) {
         return companyService.getAllUsers(id);
     }
-	
+
 	@GetMapping("/{id}/announcements")
     public Set<AnnouncementDto> getAllAnnouncements(@PathVariable Long id) {
         return companyService.getAllAnnouncements(id);
     }
-	
+
 	@GetMapping("/{id}/teams")
     public Set<TeamDto> getAllTeams(@PathVariable Long id) {
         return companyService.getAllTeams(id);
     }
-	
-	@GetMapping("/{companyId}/teams/{teamId}/projects") 
+
+	@GetMapping("/{companyId}/teams/{teamId}/projects")
 	public Set<ProjectDto> getAllProjects(@PathVariable Long companyId, @PathVariable Long teamId) {
 		return companyService.getAllProjects(companyId, teamId);
 	}
 
-	
 	@PostMapping("/{id}/teams")
     public TeamDto createTeam(@PathVariable Long id, @RequestBody TeamRequestDto teamRequestDto) {
         return companyService.createTeam(id, teamRequestDto);
     }
-	
+
 	@PatchMapping("/{id}/teams/{teamId}/projects/{projectId}")
 	public ProjectDto editProject(@PathVariable Long id, @PathVariable Long teamId,@PathVariable Long projectId,
 			@RequestBody ProjectRequestDto projectRequestDto) {
 		return companyService.editProject(id, teamId, projectId, projectRequestDto);
 	}
-
 
     @PostMapping("/{companyId}/announcements")
     public AnnouncementDto postAnnouncement(@PathVariable Long companyId, @RequestBody AnnouncementRequestDto announcementRequestDto){

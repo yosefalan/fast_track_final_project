@@ -17,7 +17,7 @@ export class LoginComponent {
       Validators.required,
       Validators.minLength(1),
     ]),
-    password: new FormControl<string>('mosteligiblebachelor', [
+    password: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(1),
     ]),
@@ -54,4 +54,3 @@ export class LoginComponent {
       });
   }
 }
-

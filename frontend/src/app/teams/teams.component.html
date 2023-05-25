@@ -1,13 +1,18 @@
 <app-navbar></app-navbar>
-<!-- <div *ngIf="user?.admin===false">
-    <div *ngFor="let teamCard of teamCards; index as i">
-        <div>
-            <h1>{{ teamCards[i].name }}</h1>
-            <h1>{{ teamCards[i].numProjects }}</h1>
-            <h1 *ngFor="let teammate of teamCard[i].teammates; index as j">{{ teamCards[i].teammates[j] }}</h1>
+<div *ngFor="let team of teams">
+  <a [routerLink]="['/projects']" [queryParams]="{ teamId: team.id }" class="team-link">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ team.name }}</h4>
+        <p class="card-subtitle">{{ team.projects.length }} projects</p>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Members</h5>
+        <div *ngFor="let member of team.teammates" class="sub-card">
+          <p>Hello</p>
+          <p>{{ member.profile.firstName }}{{ member.profile.lastName.charAt(0)}} </p>
         </div>
+      </div>
     </div>
-
-</div> -->
-
-<app-projects [projects]="projects"></app-projects>
+  </a>
+</div>

@@ -26,24 +26,27 @@
   </div>
 </app-overlay>
 
-<div class="center">
-  <h2>Announcements</h2>
-  <div class="right-align">
-    <ng-container>
-      <button
-        *ngIf="user && user.admin"
-        class="btn-link"
-        (click)="showNewAnnouncementModal()"
-      >
-        New
-      </button>
-    </ng-container>
-  </div>
-  <hr />
-  <div class="center">
-    <app-announcement-card
-      *ngFor="let announcement of announcements"
-      [announcement]="announcement"
-    ></app-announcement-card>
+<div class="announcements">
+  <div class="projects">
+    <h1>Announcements</h1>
+    <div class="projects-heading">
+      <div class="projects-heading-left"></div>
+      <div class="projects-heading-right">
+        <button
+          *ngIf="user && user.admin"
+          class="btn-link"
+          (click)="showNewAnnouncementModal()"
+        >
+          New
+        </button>
+      </div>
+    </div>
+
+    <div class="center">
+      <app-announcement-card
+        *ngFor="let announcement of announcements"
+        [announcement]="announcement"
+      ></app-announcement-card>
+    </div>
   </div>
 </div>

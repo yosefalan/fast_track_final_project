@@ -1,18 +1,21 @@
-
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900;1000&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900;1000&display=swap");
 
 body {
-  /* font-family: 'Figtree', sans-serif; */
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   color: white;
   position: absolute;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #051622;
   margin: 0;
   padding: 0;
   overflow-y: scroll;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
@@ -21,7 +24,7 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
-
+}
 /* bg rgb(5,22,34) #051622
 card bg rgb(11,45,69) #0B2D45
 buttons, text rgb(27,160,152) 1BA098
@@ -34,7 +37,7 @@ white text rgb(224,229,232) #E0E5E8 */
   box-sizing: border-box;
 }
 
-body,
+
 h1,
 h2,
 h3,
@@ -47,13 +50,6 @@ blockquote,
 dl,
 dd {
   margin: 0;
-}
-
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  background-color: #051622;
 }
 
 img {
@@ -77,7 +73,6 @@ h3 {
   font-weight: 400;
 }
 
-
 .img {
   display: flex;
   align-items: center;
@@ -93,4 +88,4 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  }
+}

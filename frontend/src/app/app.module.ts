@@ -30,7 +30,7 @@ import { AnnouncementCardComponent } from './announcements/announcement-card/ann
     OverlayComponent,
     TextInputComponent,
     UsersComponent,
-    TeamsComponent
+    TeamsComponent,
     AnnouncementCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],

@@ -14,7 +14,7 @@ export class SelectCompanyComponent {
   companies: Company[] = [];
 
   selectCompanyForm: FormGroup = new FormGroup({
-    selectedCompany: new FormControl<Company | null>(null, [
+    selectedCompany: new FormControl<Company | string>('', [
       Validators.required,
     ]),
   });

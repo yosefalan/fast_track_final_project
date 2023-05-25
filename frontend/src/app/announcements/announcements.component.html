@@ -27,11 +27,10 @@
 </app-overlay>
 
 <div class="announcements">
-  <div class="projects">
+  <div class="announcements">
     <h1>Announcements</h1>
-    <div class="projects-heading">
-      <div class="projects-heading-left"></div>
-      <div class="projects-heading-right">
+    <div class="announcements-heading">
+      <div class="announcements-heading-right">
         <button
           *ngIf="user && user.admin"
           class="btn-link"
@@ -43,6 +42,7 @@
     </div>
 
     <div class="center">
+      <hr />
       <app-announcement-card
         *ngFor="let announcement of announcements"
         [announcement]="announcement"

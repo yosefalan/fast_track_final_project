@@ -126,8 +126,8 @@ export class ProjectsComponent {
     this.http.post(url, project).subscribe(
       (response) => {
         console.log('Project created successfully:', response);
-
         hide();
+        this.fetchProjects();
       },
       (error) => {
         console.error('Error creating project:', error);
@@ -146,8 +146,8 @@ export class ProjectsComponent {
       (response) => {
         console.log('PATCH REQ');
         console.log('Project updated successfully:', response);
-
         hide();
+        this.fetchProjects();
       },
       (error) => {
         console.error('Error updating project:', error);

@@ -1,7 +1,12 @@
+.page-container {
+  height: 100vh;
+    width: 100vw;
+}
+
 .card-container {
     background-color: #051622;
     margin-top: 100px;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     display: grid;
     grid-template-columns: repeat(3, 250px);
@@ -102,4 +107,59 @@
   #new-team-card p {
     color: #DEB992;
     margin-top: 25px;
+  }
+
+  #modal-submit-btn {
+    background-color: #1ba098;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 5px 25px;
+    color: #e0e5e8;
+  }
+
+
+  .new-team-form-container  {
+    padding: 10px 25px;
+    width: 100%;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+
+  .new-team {
+    width: 100%;
+  }
+
+  .members-dropdown  {
+    padding: 10px 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .members-dropdown h2 {
+    width: 200px;
+    color: #DEB992;
+  }
+
+  .members-dropdown select {
+    width: 200px;
+    height: 25px;
+    margin-top: 10px;
+  }
+
+  .bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .remove-member {
+    background: none;
+    border: none;
+    color: #e0e5e8;
   }

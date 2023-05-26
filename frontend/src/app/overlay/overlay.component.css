@@ -1,5 +1,5 @@
 .modal {
-  display: none; /* Hidden by default */
+  display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   width: 100%; /* Full width */
@@ -47,7 +47,7 @@
 .close-btn-container {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 0px;
   display: flex;
   justify-content: flex-end;
 }

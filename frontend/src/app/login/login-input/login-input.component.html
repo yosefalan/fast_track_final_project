@@ -1,8 +1,19 @@
 <ng-container class="login-input">
   <div class="input-container">
-    <input type="text" [formControl]="control" name="control" />
+    <input
+      *ngIf="label !== 'Password'"
+      type="text"
+      [formControl]="control"
+      name="control"
+    />
+    <input
+      *ngIf="label === 'Password'"
+      type="password"
+      [formControl]="control"
+      name="control"
+    />
   </div>
-  
+
   <ng-container *ngIf="control.touched && control.errors" class="error">
     <div class="error" *ngIf="control.errors['required']">
       A {{ label }} is required

@@ -293,10 +293,10 @@ public class Seeder implements CommandLineRunner {
 	  team4.setCompany(company1);
 	  team4.setTeammates(new HashSet<User>(Arrays.asList(user1, user3)));
 	  
-	  team5.setName("Team 5");
-	  team5.setDescription("Logan & Marcia");
-	  team5.setCompany(company1);
-	  team5.setTeammates(new HashSet<User>(Arrays.asList(user6, user8)));
+//	  team5.setName("Team 5");
+//	  team5.setDescription("Logan & Marcia");
+//	  team5.setCompany(company1);
+//	  team5.setTeammates(new HashSet<User>(Arrays.asList(user6, user8)));
 	  
 	  team6.setName("Team 6");
 	  team6.setDescription("Kendall, Roman, Shiv, & Connor");

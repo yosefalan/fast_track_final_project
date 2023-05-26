@@ -1,5 +1,5 @@
-<div class="modal">
-  <div class="modal-content">
+<div class="modal" (click)="hide()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="close-btn-container">
       <button class="btn-link" (click)="hide()">
         <img src="../../assets/close-icon.png" />

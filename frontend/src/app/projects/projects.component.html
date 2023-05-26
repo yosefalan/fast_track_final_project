@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
 <div class="page-container">
   <app-overlay>
-    <div class="new-announcement-form-container">
+    <div class="form-container">
       <form
-        class="new-announcement"
+        class="edit-form"
         [formGroup]="editProjectForm"
         (ngSubmit)="projectFormSubmit()"
       >
@@ -16,21 +16,23 @@
           label="Project Description"
         ></app-text-input>
         <br />
-        <ng-container *ngIf="user?.admin === true">
-          <!-- <ng-container> -->
-          <label for="activeSelect">Active?</label>
-          <select id="activeSelect">
-            <option value="true">True</option>
-            <option value="false">False</option>
-          </select>
-        </ng-container>
-        <button
-          class="inputs button"
-          type="submit"
-          [disabled]="editProjectForm.invalid"
-        >
-          Submit
-        </button>
+        <div  class="select-container">
+          <ng-container *ngIf="user?.admin === true && mode !== 'new'">
+            <label for="activeSelect">Active?</label>
+            <select id="activeSelect" formControlName="active">
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+          </ng-container>
+          <button
+            class="inputs button"
+            id="modal-submit-btn"
+            type="submit"
+            [disabled]="editProjectForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   </app-overlay>
@@ -44,7 +46,7 @@
       </div>
     </div>
     <div class="projects-body">
-      <button *ngIf="user?.admin === true" (click)="showProjectModal()">New</button>
+      <button *ngIf="user?.admin === true" (click)="showProjectModal('new', 0)"  id="new-project-button">New</button>
       <div *ngFor="let project of projects" class="project">
         <div class="project-left">
           <div class="project-heading">
@@ -57,7 +59,7 @@
           </div>
         </div>
         <div class="project-right">
-          <button (click)="showProjectModal()">Edit</button>
+          <button (click)="showProjectModal('edit', project?.id)">Edit</button>
         </div>
       </div>
     </div>

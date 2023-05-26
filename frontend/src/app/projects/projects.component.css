@@ -1,6 +1,4 @@
-.page-container {
-  
-}
+
 
 .projects {
   background-color: #051622;
@@ -54,6 +52,7 @@
   font-size: 10px;
   padding: 5px 15px;
   color: #E0E5E8;
+  margin: 15px;
 }
 
 .project {
@@ -61,6 +60,7 @@
   border-top: 1px solid #DEB992;
   margin-top: 10px;
   color: #E0E5E8;
+  padding: 15px 0px;
 }
 
 /* .project button {
@@ -126,3 +126,32 @@ orange text rgb(227,74,30) #E34A1E
 white text rgb(224,229,232) #E0E5E8
 
 */
+
+
+#modal-submit-btn {
+  background-color: #1ba098;
+  border: none;
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 5px 35px;
+  color: #e0e5e8;
+}
+
+.select-container {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.select-container label {
+  color: #DEB992;
+  margin-top: -20px;
+  padding-bottom: 7px;
+}
+
+.select-container select {
+  margin: 5px 0px 15px 0px;
+}
+

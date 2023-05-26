@@ -47,7 +47,7 @@
 .close-btn-container {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 0px;
   display: flex;
   justify-content: flex-end;
 }

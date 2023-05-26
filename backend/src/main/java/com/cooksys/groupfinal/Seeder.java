@@ -46,6 +46,18 @@ public class Seeder implements CommandLineRunner {
 	  Project project1 = new Project();
 	  Project project2 = new Project();
 	  Project project3 = new Project();
+	  Project project4 = new Project();
+	  Project project5 = new Project();
+	  Project project6 = new Project();
+	  Project project7 = new Project();
+	  Project project8 = new Project();
+	  Project project9 = new Project();
+	  Project project10 = new Project();
+	  Project project11 = new Project();
+	  Project project12 = new Project();
+	  Project project13 = new Project();
+	  Project project14 = new Project();
+	  Project project15 = new Project();
 	  
 	  Team team1 = new Team();
 	  Team team2 = new Team();
@@ -271,6 +283,66 @@ public class Seeder implements CommandLineRunner {
 	  project3.setActive(true);
 	  project3.setTeam(team3);
 	  
+	  project4.setName("E-commerce Platform Redesign");
+	  project4.setDescription("Waystar Royco's e-commerce platform will undergo a complete redesign to enhance user experience, optimize sales funnels, and improve conversion rates.");
+	  project4.setActive(true);
+	  project4.setTeam(team4);
+
+	  project5.setName("Marketing Campaign Expansion");
+	  project5.setDescription("An expanded marketing campaign will be launched to reach new target demographics and increase brand awareness for Waystar Royco.");
+	  project5.setActive(true);
+	  project5.setTeam(team6);
+
+	  project6.setName("Employee Training and Development Program");
+	  project6.setDescription("A comprehensive training and development program will be implemented to enhance employee skills, foster professional growth, and improve overall performance at Waystar Royco.");
+	  project6.setActive(true);
+	  project6.setTeam(team3);
+
+	  project7.setName("International Expansion Strategy");
+	  project7.setDescription("Waystar Royco aims to expand its operations into new international markets, and this project will involve market research, feasibility studies, and strategic planning.");
+	  project7.setActive(true);
+	  project7.setTeam(team2);
+
+	  project8.setName("Cloud Migration and Optimization");
+	  project8.setDescription("Cook Systems will migrate its infrastructure to the cloud to improve scalability, flexibility, and cost-efficiency.");
+	  project8.setActive(true);
+	  project8.setTeam(team5);
+
+	  project9.setName("Mobile App Security Audit");
+	  project9.setDescription("A thorough security audit will be conducted on Cook Systems' mobile applications to identify vulnerabilities, implement necessary safeguards, and ensure data protection.");
+	  project9.setActive(true);
+	  project9.setTeam(team7);
+
+	  project10.setName("Agile Transformation");
+	  project10.setDescription("Cook Systems will undergo an Agile transformation to embrace iterative development, enhance collaboration, and improve project delivery efficiency.");
+	  project10.setActive(true);
+	  project10.setTeam(team1);
+
+	  project11.setName("Data Privacy Compliance Initiative");
+	  project11.setDescription("Cook Systems will establish a comprehensive data privacy compliance framework aligned with relevant regulations, ensuring the protection of customer data and maintaining legal compliance.");
+	  project11.setActive(true);
+	  project11.setTeam(team2);
+	  
+	  project12.setName("Legacy System Migration");
+	  project12.setDescription("Migrate legacy systems to modern technology stack for improved performance and maintainability.");
+	  project12.setActive(false);
+	  project12.setTeam(team2);
+
+	  project13.setName("Brand Refresh Campaign");
+	  project13.setDescription("Launch a brand refresh campaign to update Waystar Royco's visual identity and messaging.");
+	  project13.setActive(false);
+	  project13.setTeam(team4);
+	  
+	  project14.setName("Infrastructure Security Audit");
+	  project14.setDescription("Conduct a comprehensive security audit of Cook Systems' IT infrastructure to identify vulnerabilities and strengthen defenses.");
+	  project14.setActive(false);
+	  project14.setTeam(team5);
+
+	  project15.setName("Process Automation Implementation");
+	  project15.setDescription("Implement process automation solutions to streamline workflows and improve operational efficiency.");
+	  project15.setActive(false);
+	  project15.setTeam(team7);
+	  
 	  team1.setName("Team 1");
 	  team1.setDescription("Greg & Tom");
 	  team1.setCompany(company1);
@@ -297,6 +369,12 @@ public class Seeder implements CommandLineRunner {
 //	  team5.setDescription("Logan & Marcia");
 //	  team5.setCompany(company1);
 //	  team5.setTeammates(new HashSet<User>(Arrays.asList(user6, user8)));
+	  
+	  team5.setName("Team 5");
+	  team5.setDescription("Helena & Will");
+	  team5.setCompany(company2);
+	  team5.setTeammates(new HashSet<User>(Arrays.asList(user10, user12)));
+	  team5.setProjects(new HashSet<Project>(Arrays.asList(project2)));
 	  
 	  team6.setName("Team 6");
 	  team6.setDescription("Kendall, Roman, Shiv, & Connor");
@@ -347,10 +425,29 @@ public class Seeder implements CommandLineRunner {
 	  user12.setCompanies(new HashSet<Company>(Arrays.asList(company2)));
 	  user12.setTeams(new HashSet<Team>(Arrays.asList(team7)));
 	  
+	  
+
+	    project1.setTeam(team1);
+	    project2.setTeam(team7);
+	    project3.setTeam(team3);
+	    project4.setTeam(team4);
+	    project5.setTeam(team6);
+	    project6.setTeam(team3);
+	    project7.setTeam(team2);
+	    project8.setTeam(team5);
+	    project9.setTeam(team7);
+	    project10.setTeam(team1);
+	    project11.setTeam(team2);
+	    project12.setTeam(team2);
+	    project13.setTeam(team4);
+	    project14.setTeam(team5);
+	    project15.setTeam(team7);
+
+	  
 	  announcementRepository.saveAllAndFlush(Arrays.asList(
 	  		new Announcement[] { announcement1, announcement2, announcement3, announcement4, announcement5  }));
 	  companyRepository.saveAllAndFlush(Arrays.asList(new Company[] { company1, company2 }));
-	  projectRepository.saveAllAndFlush(Arrays.asList(new Project[] { project1, project2, project3 }));
+	  projectRepository.saveAllAndFlush(Arrays.asList(new Project[] { project1, project2, project3, project4, project5, project6, project7, project8, project9, project10, project11, project12, project13, project14, project15 }));
 	  teamRepository.saveAllAndFlush(Arrays.asList(new Team[] { team1, team2, team3, team4, team5, team6, team7 }));
 	  userRepository.saveAllAndFlush(Arrays.asList(
 			  new User[] { user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12 }));

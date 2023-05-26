@@ -30,7 +30,6 @@
             </option>
           </select>
         </div>
-
         <div class="selected-members">
           <span *ngFor="let member of selectedMembers" class="selected-member">
             {{ member.profile.firstName }}
@@ -46,6 +45,7 @@
         <br />
         <button
           class="inputs button"
+          id="modal-submit-btn"
           type="submit"
           [disabled]="newTeamForm.invalid"
         >
@@ -54,7 +54,6 @@
       </form>
     </div>
   </app-overlay>
-
   <div class="card-container">
     <div *ngFor="let team of teams" class="outer-card">
       <a
@@ -65,7 +64,6 @@
         <div class="card">
           <div class="card-header">
             <h4 class="card-title">{{ team.name }}</h4>
-
             <p class="card-subtitle">
               # of Projects: {{ projectCountsPerTeam[team.id] }}
             </p>
@@ -103,5 +101,4 @@
       </a>
     </div>
   </div>
-
 </div>

@@ -15,35 +15,41 @@
         label="Message"
       ></app-text-input>
       <br />
-      <button
-        class="inputs button"
-        type="submit"
-        [disabled]="newAnnouncementForm.invalid"
-      >
-        Submit
-      </button>
+      <div class="submit-btn-container">
+        <button
+          class="inputs button"
+          id="modal-submit-btn"
+          type="submit"
+          [disabled]="newAnnouncementForm.invalid"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   </div>
 </app-overlay>
 
-<div class="center">
-  <h2>Announcements</h2>
-  <div class="right-align">
-    <ng-container>
-      <button
-        *ngIf="user && user.admin"
-        class="btn-link"
-        (click)="showNewAnnouncementModal()"
-      >
-        New
-      </button>
-    </ng-container>
-  </div>
-  <hr />
-  <div class="center">
-    <app-announcement-card
-      *ngFor="let announcement of announcements"
-      [announcement]="announcement"
-    ></app-announcement-card>
+<div class="announcements">
+  <div class="announcements">
+    <h1>Announcements</h1>
+    <div class="announcements-heading">
+      <div class="announcements-heading-right">
+        <button
+          *ngIf="user && user.admin"
+          class="btn-link"
+          (click)="showNewAnnouncementModal()"
+        >
+          New
+        </button>
+      </div>
+    </div>
+
+    <div class="center">
+      <hr />
+      <app-announcement-card
+        *ngFor="let announcement of announcements"
+        [announcement]="announcement"
+      ></app-announcement-card>
+    </div>
   </div>
 </div>

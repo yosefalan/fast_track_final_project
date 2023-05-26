@@ -14,7 +14,7 @@ export class SelectCompanyComponent {
   companies: Company[] = [];
 
   selectCompanyForm: FormGroup = new FormGroup({
-    selectedCompany: new FormControl<Company | null>(null, [
+    selectedCompany: new FormControl<Company | string>('', [
       Validators.required,
     ]),
   });
@@ -27,11 +27,17 @@ export class SelectCompanyComponent {
   ) {}
 
   ngOnInit(): void {
-    this.userData.loggedInUser.subscribe((user) => {
-      if (user === null) {
-        this.router.navigateByUrl('/');
-      } else this.companies = user.companies;
-    });
+    fetch('http://localhost:8080/company', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.companies=data
+      });
   }
 
   onSubmit(): void {

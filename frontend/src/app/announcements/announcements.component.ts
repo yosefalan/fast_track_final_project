@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OverlayComponent } from '../overlay/overlay.component';
-import { show } from '../overlay/helper';
+import { show as showOverlay, hide as hideOverlay } from '../overlay/helper';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import User from '../models/User';
@@ -67,7 +67,7 @@ export class AnnouncementsComponent {
   }
 
   showNewAnnouncementModal() {
-    show();
+    showOverlay();
   }
 
   onNewAnnouncementFormSubmit(): void {
@@ -92,6 +92,7 @@ export class AnnouncementsComponent {
         })
         .then(() => {
           this.loadCompanyAnnouncements(this.companyId);
+          hideOverlay();
         });
     }
   }

@@ -1,6 +1,12 @@
-<div class="modal">
-  <div class="modal-content">
-    <button class="btn-link" (click)="hide()">X</button>
-    <ng-content></ng-content>
+<div class="modal" (click)="hide()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="close-btn-container">
+      <button class="btn-link" (click)="hide()">
+        <img src="../../assets/close-icon.png" />
+      </button>
+    </div>
+    <div class="modal-form">
+      <ng-content></ng-content>
+    </div>
   </div>
 </div>

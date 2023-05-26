@@ -10,6 +10,7 @@ import { ProjectsComponent } from '../projects/projects.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import BasicUser from '../models/BasicUser';
 import { show } from '../overlay/helper';
+import { hide } from '../overlay/helper';
 
 
 @Component({
@@ -181,7 +182,8 @@ export class TeamsComponent {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
+          hide();
+          this.fetchAdminTeams();
         })
         .catch((error) => {
           console.error('Error creating team:', error);

@@ -1,5 +1,5 @@
-<div class="page-container">
 <app-navbar></app-navbar>
+<div class="page-container">
   <app-overlay>
     <div class="new-team-form-container">
       <form
@@ -7,11 +7,11 @@
         [formGroup]="newTeamForm"
         (ngSubmit)="onNewTeamFormSubmit()"
       >
-        <app-text-input class="form-input"
+        <app-text-input
           [control]="$any(newTeamForm.get('name'))"
           label="Name"
         ></app-text-input>
-        <app-text-input class="form-input"
+        <app-text-input
           [control]="$any(newTeamForm.get('description'))"
           label="Description"
         ></app-text-input>
@@ -22,6 +22,7 @@
             id="members"
             formControlName="members"
             (change)="updateSelectedMembers()"
+            multiple
           >
             <option *ngFor="let member of availableMembers" [value]="member.id">
               {{ member.profile.firstName }}
@@ -29,33 +30,30 @@
             </option>
           </select>
         </div>
-        <div class="bottom-section">
-          <div class="selected-members">
-            <span *ngFor="let member of selectedMembers" class="selected-member sub-card">
-              {{ member.profile.firstName }}
-              {{ member.profile.lastName.charAt(0) }}.
-              <button
-                class="remove-member"
-                (click)="removeSelectedMember(member.id)"
-              >
-                X
-              </button>
-            </span>
-          </div>
-          <br />
-          <button
-            class="inputs button"
-            id="modal-submit-btn"
-            type="submit"
-            [disabled]="newTeamForm.invalid"
-          >
-            Submit
-          </button>
+        <div class="selected-members">
+          <span *ngFor="let member of selectedMembers" class="selected-member">
+            {{ member.profile.firstName }}
+            {{ member.profile.lastName.charAt(0) }}.
+            <button
+              class="remove-member"
+              (click)="removeSelectedMember(member.id)"
+            >
+              X
+            </button>
+          </span>
         </div>
+        <br />
+        <button
+          class="inputs button"
+          id="modal-submit-btn"
+          type="submit"
+          [disabled]="newTeamForm.invalid"
+        >
+          Submit
+        </button>
       </form>
     </div>
   </app-overlay>
-
   <div class="card-container">
     <div *ngFor="let team of teams" class="outer-card">
       <a
@@ -66,7 +64,6 @@
         <div class="card">
           <div class="card-header">
             <h4 class="card-title">{{ team.name }}</h4>
-
             <p class="card-subtitle">
               # of Projects: {{ projectCountsPerTeam[team.id] }}
             </p>
@@ -104,5 +101,4 @@
       </a>
     </div>
   </div>
-
 </div>

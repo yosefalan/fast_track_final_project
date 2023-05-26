@@ -122,7 +122,7 @@ public class CompanyServiceImpl implements CompanyService {
 		}
 		Set<Project> filteredProjects = new HashSet<>();
 		team.getProjects().forEach(filteredProjects::add);
-		filteredProjects.removeIf(project -> !project.isActive());
+//		filteredProjects.removeIf(project -> !project.isActive());
 		return projectMapper.entitiesToDtos(filteredProjects);
 	}
 
